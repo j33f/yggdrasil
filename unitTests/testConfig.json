@@ -1,0 +1,131 @@
+{
+  "logger": {
+    "level": "silly"
+  },
+  "port": 8842,
+  "sessions": {
+    "duration": "3h",
+    "durationSeconds": 10800
+  },
+  "api": {
+    "version": "v1"
+  },
+  "authorizedFrontOrigins": [
+    "localhost:3000",
+    "tests.monchasseur.immo:3000",
+    "preprod.monchasseur.immo",
+    "crm.monchasseur.immo",
+    "sandbox.monchasseur.immo"
+  ],
+  "fileStorage": {
+    "type": "local",
+    "path": "/var/yggdrasil/fileStorage"
+  },
+  "AzureServer": {
+    "protocol": "https",
+    "host": "test-api-crm.azurewebsites.net",
+    "port": 443,
+    "apiBase": "/api/v1"
+  },
+  "redis": {
+    "port": 6379,
+    "host": "redis",
+    "family": 4,
+    "db": 0
+  },
+  "mongo": {
+    "useSSL": false,
+    "host": "mongo",
+    "port": 27017,
+    "auth": {
+      "userName": "mongo-admin",
+      "password": "1Lnl4ZEg!gPdF!zGKdILfww"
+    }
+  },
+  "sendmail": {
+    "name": "NetacCRMV2",
+    "pool": true,
+    "host": "mailout",
+    "port": 25,
+    "secure": false,
+    "ignoreTLS": true
+  },
+  "mailjet": {
+    "api": {
+      "sms": {
+        "token": "408a31c0d9374fab8f106770bf2b366b"
+      },
+      "mail": {
+        "public": "d914b54626e3fa76a8f6b2a9e60c7c76",
+        "private": "406a91a8e50c8559172afe1dd137986c"
+      }
+    },
+    "templates": {
+      "notificationDefault": 499319,
+      "ctaDefault": 500371,
+      "resetPassword": 536133,
+      "newAccount": 535553,
+      "newPassword": 847184,
+      "newProjectAttribution": 607979,
+      "milestoneCustomerAgenda": 630893,
+      "doOffer": 631185,
+      "editFinalInvoice": 631263,
+      "test": 651211,
+      "missionLetterSigned": 651591,
+      "payFinalInvoiceRequest": 672638,
+      "agreementSignedRetraction": 903016
+    }
+  },
+  "sms": {
+    "strategy": "mailjet",
+    "defaultFrom": "CRMmci"
+  },
+  "emails": {
+    "strategy": "mailjet",
+    "from": {
+      "name": "CRM",
+      "email": "crm@monchasseurimmo.com"
+    },
+    "testModeEmail": "devtest@monchasseurimmo.com",
+    "missionLetterEmail": "mandat@monchasseurimmo.com",
+    "missionLetterName": "Mandat"
+  },
+  "proxyMesh": {
+    "username": "CRMV2",
+    "password": "MédorLamiDuChasseur",
+    "entryPoints": [
+      "fr.proxymesh.com:31280",
+      "de.proxymesh.com:31280",
+      "nl.proxymesh.com:31280",
+      "uk.proxymesh.com:31280",
+      "ch.proxymesh.com:31280",
+      "open.proxymesh.com:31280"
+    ]
+  },
+  "OpenDataLaposteAPiKey": "aa6d3b9f23d83064daf4c1853fd4b48a23bcafa38fcefc919f9d75ea",
+  "propertiesPlugEngine": {
+    "uri": "https://monespace.net-acheteur.com/rpc/plugin/Plug",
+    "paramName": "url",
+    "token": "q35sd43q5s4ds3gffgh4d3fg45sd3fs5sdf43qdezz"
+  },
+  "geocoder": {
+    "defaultStrategy": "google",
+    "strategies": {
+      "google": {
+        "provider": "google",
+        "httpAdapter": "https",
+        "apiKey": "AIzaSyDxcusZlAuy60wl6WshcC_0nzhukvi7SE0",
+        "formatter": null
+      }
+    }
+  },
+  "bugReport": {
+    "strategy": "asana",
+    "asana": {
+      "apiKey": "0/274d6c5c0c30a53a67ee16b9314184df",
+      "workspaceId": "161514807247726",
+      "projectId": "659595338164152",
+      "assigneeId": "412315172307062"
+    }
+  }
+}

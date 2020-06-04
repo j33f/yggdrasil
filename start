@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+chmod a+x bin/startServer
+chmod a+x bin/bulkImport
+chmod a+x bin/bulkImport.js
+chmod a+x bin/migrate.js
+
+chmod a+x docker-compose/scripts/*
+
+docker-compose -f docker-compose/dev.yml up -d
+
+docker-compose -f docker-compose/dev.yml -f --tail="0"

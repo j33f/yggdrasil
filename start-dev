@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+docker-compose -f docker-compose/dev.yml kill
+
+chmod a+x bin/startServer
+
+chmod a+x docker-compose/scripts/*
+
+exec docker-compose -f docker-compose/dev.yml up

@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+'use strict';
+
+/** Load fixtures **/
+const fixtures = require('../features/support/fixtures');
+
+/** Declare Yggdrasil **/
+const yggdrasil = require('../yggdrasil');
+
+/** Start Yggdrasil ! **/
+yggdrasil.startup.startFunctionalTestingServer(fixtures, {
+  port: 8843,
+  redis: {
+    port: 6379,
+    host: 'redis',
+    family: 4,
+    db: 1
+  }
+});
+

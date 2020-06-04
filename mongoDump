@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+docker exec mongo sh -c 'exec mongodump --username mongo-admin --password "1Lnl4ZEg!gPdF!zGKdILfww" --authenticationDatabase admin --db users --archive=/data/dumps/users.dump'
+docker exec mongo sh -c 'exec mongodump --username mongo-admin --password "1Lnl4ZEg!gPdF!zGKdILfww" --authenticationDatabase admin --db business --archive=/data/dumps/business.dump'
+docker exec mongo sh -c 'exec mongodump --username mongo-admin --password "1Lnl4ZEg!gPdF!zGKdILfww" --authenticationDatabase admin --db files --archive=/data/dumps/files.dump'

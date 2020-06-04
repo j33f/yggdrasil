@@ -1,0 +1,145 @@
+Feature: SocketIO API
+
+  @ioDisconnectAfter
+  Scenario: Login then emit a SocketIO call
+    Given I am not authenticated
+    Then I authenticate myself as "cmarseille@yggdrasil.com" with password "toto" which exist
+    When I emit the "users/me" event with no data
+    Then I receive a document corresponding to the fixture located in "testing_users.data" with id "5c61894fd6b0362d7b5fbe8d"
+
+  @ioDisconnectAfter
+  Scenario: Emit a SocketIO call without a valid JWT
+    Given I am not authenticated
+    When I emit the "users/me" event with no data
+    Then I receive a JWT error as a response
+
+  @ioDisconnectAfter
+  Scenario: Get a document via its type route and id
+    Given I am not authenticated
+    Then I authenticate myself as "cmarseille@yggdrasil.com" with password "toto" which exist
+    When I emit the "test/get" event to get the document with id "5cfa2e9c98bf4e005c82a625"
+    Then I receive a document corresponding to the fixture located in "testing_business.origins" with id "5cfa2e9c98bf4e005c82a625"
+
+  @ioDisconnectAfter
+  Scenario: Get a documents list
+    Given I am not authenticated
+    Then I authenticate myself as "cmarseille@yggdrasil.com" with password "toto" which exist
+    When I emit the "origins/list" event with no data
+    Then I receive a document list containing the fixtures located in "testing_business.origins"
+
+  @ioDisconnectAfter
+  Scenario: Get a documents list with a simple query
+    Given I am not authenticated
+    Then I authenticate myself as "cmarseille@yggdrasil.com" with password "toto" which exist
+    When I emit the "origins/list" event with the following query data
+      """
+      {
+        filter: {
+          group: 'test'
+        }
+      }
+      """
+    Then I receive a document list containing documents with the following ids
+      """
+      ['5cfa2e9c98bf4e005c82a625', '5cfa2e9c98bf4e005c82a626']
+      """
+
+  @ioDisconnectAfter
+  Scenario: Get a documents list with a more complex query
+    Given I am not authenticated
+    Then I authenticate myself as "cmarseille@yggdrasil.com" with password "toto" which exist
+    When I emit the "origins/list" event with the following query data
+      """
+      {
+        filter: {
+          group: 'test',
+          name: 'test2'
+        }
+      }
+      """
+    Then I receive a document list containing documents with the following ids
+      """
+      ['5cfa2e9c98bf4e005c82a626']
+      """
+
+  @ioDisconnectAfter
+  Scenario: Get an documents list when a query fails
+    Given I am not authenticated
+    Then I authenticate myself as "cmarseille@yggdrasil.com" with password "toto" which exist
+    When I emit the "origins/list" event with the following query data
+      """
+      {
+        filter: {
+          foo: 'bar',
+          baz: 'qux'
+        }
+      }
+      """
+    Then I receive a document list containing documents with the following ids
+      """
+      []
+      """
+
+  @ioDisconnectAfter
+  Scenario: Create a document then delete it
+    Given I am not authenticated
+    Then I authenticate myself as "salesmanager@yggdrasil.com" with password "toto" which exist
+    When I emit the "origins/create" event to create the following document
+      """
+      {
+        "code" : "testCreate",
+        "createdAt" : 1559899804,
+        "createdBy" : "5c618d51d6b0362d7b601171",
+        "description" : "testCreate",
+        "group" : "testCreate",
+        "lastModifiedAt" : 1559899804,
+        "name" : "testCreate",
+        "order" : 42
+      }
+      """
+    Then I receive the created document with its id
+    When I emit the "origins/list" event with no data
+    Then There is 1 more document than in fixture "testing_business.origins"
+    When I emit the "origins/delete" event to delete the last created document
+    When I emit the "origins/list" event with no data
+    Then There is 0 more document than in fixture "testing_business.origins"
+    And I receive a document list containing the fixtures located in "testing_business.origins"
+
+  @ioDisconnectAfter
+  Scenario: Create, update and delete document and listen to the corresponding events
+    Given I am not authenticated
+    Then I authenticate myself as "salesmanager@yggdrasil.com" with password "toto" which exist
+    And I listen to the create event "create/testing_business/origins"
+    When I emit the "origins/create" event to create the following document
+      """
+      {
+        "code" : "testCreate",
+        "createdAt" : 1559899804,
+        "createdBy" : "5c618d51d6b0362d7b601171",
+        "description" : "testCreate",
+        "group" : "testCreate",
+        "lastModifiedAt" : 1559899804,
+        "name" : "testCreate",
+        "order" : 42
+      }
+      """
+    Then I receive the created document with its id
+    And The listener to the create event "create/testing_business/origins" receives the right response
+    When I listen to the update event "update/testing_business/origins" with the created document id
+    And I emit the "origins/update" event to update the last created document with
+      """
+      {
+        "code" : "testCreateUpdated",
+        "createdAt" : 1559899804,
+        "createdBy" : "5c618d51d6b0362d7b601171",
+        "description" : "testCreate",
+        "group" : "testCreate",
+        "lastModifiedAt" : 1559899804,
+        "name" : "testCreate",
+        "order" : 42
+      }
+      """
+    Then The listener to the update event "update/testing_business/origins" receives the right response
+    When I listen to the delete event "delete/testing_business/origins" with the created document id
+    And I emit the "origins/delete" event to delete the last created document
+    Then The listener to the delete event "delete/testing_business/origins" receives the right response

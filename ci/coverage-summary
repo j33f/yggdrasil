@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo '## Unit Test Coverage'
+echo '| Type | Percentage | Count |'
+echo '|------|------------|-------|'
+nyc report --reporter=text-summary \
+  | sed 's/\(.*\):\(.*\)(\(.*\))/|\1|\2|\3|/' \
+  | sed '/.*===.*$/d' \
+  | sed '/^ *$/d'
+echo

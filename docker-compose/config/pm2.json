@@ -1,0 +1,8 @@
+{
+  "apps": [{
+    "name"         : "Yggdrasil",
+    "script"       : "bin/startServer",
+    "args"         : [],
+    "kill_timeout" : 15000
+  }]
+}
