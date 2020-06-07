@@ -6,8 +6,8 @@ echo 'Starting the server in testing mode... (please wait)'
 
 ## Starts the server silently
 nyc --temp-directory ./.nyc_output.func --report-dir coverage.functional --reporter=text-summary --reporter=lcov ./bin/startServerInTestingMode &>/dev/null &
-## Starts the server verbosely
-## nyc --temp-directory ./.nyc_output.func --report-dir coverage.functional --reporter=text-summary --reporter=lcov ./bin/startServerInTestingMode &
+## Starts the server verbosely for testing
+##nyc --temp-directory ./.nyc_output.func --report-dir coverage.functional --reporter=text-summary --reporter=lcov ./bin/startServerInTestingMode &
 
 ## Awaiting for the server to be started
 printf "Awaiting to connect to the testing server"
