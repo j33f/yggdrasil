@@ -1,29 +1,16 @@
 'use strict';
 
-const
-  logger = require('winston'),
-  express = require('express'),
-  helmet = require('helmet'),
-  path = require('path'),
-  httpLogger = require('morgan'),
-  cookieParser = require('cookie-parser'),
-  bodyParser = require('body-parser'),
-  expressJWT = require('express-jwt'),
-  fileUpload = require('express-fileupload'),
-  ObjectID = require('mongodb').ObjectID,
-  nodemailer = require('nodemailer'),
-  moment = require('moment'),
-  { merge } = require('lodash'),
-  { readFileSync, writeFileSync } = require('fs');
+const ObjectID = require('mongodb').ObjectID;
+const express = require('express');
 
 console.log('.-.  .-..---.  .---. .----. .----.   .--.   .----..-..-.   \n' +
-  ' \\ \\/ //   __}/   __}| {}  \\| {}  } / {} \\ { {__  | || |   \n' +
-  '  }  { \\  {_ }\\  {_ }|     /| .-. \\/  /\\  \\.-._} }| || `--.\n' +
-  '  `--\'  `---\'  `---\' `----\' `-\' `-\'`-\'  `-\'`----\' `-\'`----\'');
-
+' \\ \\/ //   __}/   __}| {}  \\| {}  } / {} \\ { {__  | || |   \n' +
+'  }  { \\  {_ }\\  {_ }|     /| .-. \\/  /\\  \\.-._} }| || `--.\n' +
+'  `--\'  `---\'  `---\' `----\' `-\' `-\'`-\'  `-\'`----\' `-\'`----\'');
 
 // Yggdrasil is an express instance
 let yggdrasil = express();
+yggdrasil.rootPath = __dirname;
 
 /**
  * Configuration loader
@@ -59,28 +46,28 @@ yggdrasil.lib = require('./lib');
  * YGGDRASIL DEFINE METHODS TO INSTANTIATE CORE COMPONENTS
  *
  **********************************************************************************************************************/
-yggdrasil.startup = {
+/*yggdrasil.startup = {
   instantiate: async (config) => {
-    /**
+    /!**
      * Instantiate core services
-     */
-    /** Load the config **/
+     *!/
+    /!** Load the config **!/
     console.time('time: ⏲  Pre-startup took');
     console.time('time: ⏲  Load config took');
     yggdrasil.loadConfig(config);
     console.timeEnd('time: ⏲  Load config took');
 
-    /** Instantiate and configure the logger **/
+    /!** Instantiate and configure the logger **!/
     yggdrasil.logger = logger;
     yggdrasil.logger.level = yggdrasil.config.logger.level || 'silly';
 
-    /** Prepares the yggdrasil to be served if needed **/
+    /!** Prepares the yggdrasil to be served if needed **!/
     yggdrasil.server = {};
 
-    /** Adds events capabilities to the yggdrasil **/
+    /!** Adds events capabilities to the yggdrasil **!/
     yggdrasil.events = new yggdrasil.lib.controllers.events(yggdrasil); // adds some methods to yggdrasil as shortcuts: see controller
 
-    /** Define storage providers **/
+    /!** Define storage providers **!/
     console.time('time: ⏲  Defining Storages took');
     yggdrasil.storage = {
       mongo: new yggdrasil.lib.drivers.mongo(yggdrasil, yggdrasil.config.mongo),
@@ -139,9 +126,9 @@ yggdrasil.startup = {
   server: {
     express: {
       base: async () => {
-        /**
+        /!**
          * Configure Express: base
-         */
+         *!/
         // Base config
         yggdrasil.use(helmet({
           frameguard: false,
@@ -166,9 +153,9 @@ yggdrasil.startup = {
         });
       },
       CORS: async () => {
-        /**
+        /!**
          * Configure Express: CORS
-         */
+         *!/
         // middleware to manage CORS
         yggdrasil.use((req, res, next) => {
           res.set({
@@ -181,10 +168,10 @@ yggdrasil.startup = {
         });
       },
       JWT: async () => {
-        /**
+        /!**
          * Configure Express : JWT
-         */
-        /** Set the yggdrasil JWT secret **/
+         *!/
+        /!** Set the yggdrasil JWT secret **!/
         yggdrasil.config.JWTSecret = '5b0fc0ed78708601f8d3bd495b0fc0ed78708601f8d3bd4a';
         yggdrasil.config.iss = 'Yggdrasil';
         yggdrasil.logger.info('⚙  JWTSecret =', yggdrasil.config.JWTSecret);
@@ -240,17 +227,17 @@ yggdrasil.startup = {
       },
       router: {
         staticFiles: async () => {
-          /**
+          /!**
            * Configure Express: Router: Static Files
-           */
+           *!/
           // instantiate routes for common static files
           yggdrasil.use('/fs', express.static(path.join(__dirname, 'fileStorage')));
           yggdrasil.logger.info('⚙  Will serve static files from', path.join(__dirname, 'fileStorage'), 'as /fs');
         },
         API: async () => {
-          /**
+          /!**
            * Configure Express: Router: API
-           */
+           *!/
           const rootDefaultResponse = {
             server: {
               version: 'α',
@@ -277,9 +264,9 @@ yggdrasil.startup = {
         },
         errors: {
           notFound: async () => {
-            /**
+            /!**
              * Configure Express: Router: Errors: 404
-             */
+             *!/
             yggdrasil.use((req, res) => {
               const err = new Error('Not Found');
               err.status = 404;
@@ -296,9 +283,9 @@ yggdrasil.startup = {
             });
           },
           default: async () => {
-            /**
+            /!**
              * Configure Express: Router: Errors: defaults
-             */
+             *!/
             yggdrasil.use((err, req, res) => {
               // set locals, only providing error in development
               res.locals.message = err.message;
@@ -426,7 +413,7 @@ yggdrasil.startup = {
       serverStarted = false,
       sendmailReached = false;
 
-    /** Start The yggdrasil ! **/
+    /!** Start The yggdrasil ! **!/
     console.log('into:', '☘  Instantiating the core components in server mode...');
     console.time('time: ⏲  Starting Server took');
     try {
@@ -436,7 +423,7 @@ yggdrasil.startup = {
       process.exit(1);
     }
 
-    /** Define the domain and ports **/
+    /!** Define the domain and ports **!/
     yggdrasil.server.domain = process.env.DOMAIN || 'localhost';
     yggdrasil.logger.info('⚙  Configured domain is', yggdrasil.server.domain);
 
@@ -451,10 +438,10 @@ yggdrasil.startup = {
     yggdrasil.server.port = yggdrasil.lib.utils.network.normalizePort(process.env.PORT || yggdrasil.config.port || 443);
     yggdrasil.logger.info('⚙  Configured port is', yggdrasil.server.port);
 
-    /** Set the env mode **/
+    /!** Set the env mode **!/
     yggdrasil.set('env', process.env.ENV || 'development');
 
-    /** Listen o events to know when the server is really started **/
+    /!** Listen o events to know when the server is really started **!/
     yggdrasil.listenOnce('startup/core/sendmail', () => {
       sendmailReached = true;
       yggdrasil.fire('startup/somethingOk');
@@ -502,10 +489,10 @@ yggdrasil.startup = {
 
       yggdrasil.fixtures = fixtures;
 
-      /** writes the current server PID into a file so that the server can be interrupted or killed easily **/
+      /!** writes the current server PID into a file so that the server can be interrupted or killed easily **!/
       writeFileSync('/var/run/yggdrasilTestingServer.pid', process.pid);
 
-      /** replace defaultConfig parts with testing config **/
+      /!** replace defaultConfig parts with testing config **!/
       config = merge(defaultConfig, config);
 
       const _yggdrasil = await yggdrasil.startup.startServer(config);
@@ -515,7 +502,9 @@ yggdrasil.startup = {
       process.exit(1);
     }
   }
-};
+};*/
+
+yggdrasil.lib.core.startup(yggdrasil);
 
 /**
  * Allow to kill the current instance of Yggdrasil
@@ -537,63 +526,6 @@ yggdrasil.kill = async (_yggdrasil, callback) => {
     }
   });
 };
-
-/**
- * Reconfigure the current yggdrasil instance repositories to use the testing indexes and inject fixtures into the database
- */
-async function configureYggdrasilForFunctionalTesting (_yggdrasil) {
-  _yggdrasil.logger.info('!!! Injecting fixtures');
-
-  if (_yggdrasil.fixtures === undefined) {
-    throw new Error('configureYggdrasilForFunctionalTesting: you should have injected fixtures into yggdrasil.fixtures first');
-  }
-  Object.keys(yggdrasil.repositories).forEach(key => {
-    _yggdrasil.repositories[key].setIndexCollection('testing_' + yggdrasil.repositories[key].index);
-    _yggdrasil.logger.info('!!! injecting fixtures into', _yggdrasil.repositories[key].index, _yggdrasil.repositories[key].collection);
-  });
-
-  // injects fixtures
-  Object.keys(yggdrasil.fixtures).forEach(index => {
-    Object.keys(yggdrasil.fixtures[index]).forEach(collection => {
-      _yggdrasil.fixtures[index][collection].forEach(async item => {
-        await _yggdrasil.storageService.set({
-          index: index,
-          collection: collection,
-          body: item
-        });
-      });
-    });
-  });
-
-  _yggdrasil.functionalTestingInitDone = true;
-
-  _yggdrasil.logger.info('!!! Fixtures injected');
-
-  /**
-   * Helps to cleanup the testing fixtures
-   * @param currentInstance
-   */
-  _yggdrasil.cleanupFunctionalTestingdata = async (currentInstance) => {
-    currentInstance.logger.info('!!! Deleting fixtures');
-    if (currentInstance.fixtures === undefined) {
-      throw new Error('configureYggdrasilForFunctionalTesting: you should have injected fixtures into yggdrasil.fixtures first');
-    }
-    currentInstance.logger.info('>>> Indexes to delete', Object.keys(currentInstance.fixtures));
-
-    try {
-      currentInstance.storageService.dropIndexes(Object.keys(currentInstance.fixtures));
-    } catch (e) {
-      console.log(e);
-    }
-
-    currentInstance.logger.info('!!! Fixtures deleted');
-
-    return currentInstance;
-  };
-
-  return _yggdrasil;
-}
-
 /**
  * Kill the current instance when the process receive the SIGTERM signal
  */
