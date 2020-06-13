@@ -6,7 +6,7 @@ services:
     container_name: backend
     command: sh -c 'chmod 755 /run.sh && /run.sh'
     volumes:
-      - "..:/var/yggdrasil:delegated"
+      - "..:/var/app:delegated"
       - "./scripts/run-concourse.sh:/run.sh:delegated"
       - "./config/pm2-dev.json:/config/pm2.json:delegated"
     cap_add:

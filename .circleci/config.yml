@@ -4,7 +4,7 @@ orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.1
 
 jobs:
-  build-and-test:
+  unit-test:
     executor:
       name: node/default
     steps:
@@ -13,11 +13,38 @@ jobs:
           steps:
             - run: npm install
             - run: npm run test:unit
+  functional-test:
+    docker:
+      - image: circleci/buildpack-deps:latest
+    steps:
+      - checkout
+      - run:
+          name: Install Docker Compose
+          command: |
+            set -x
+            curl -L https://github.com/docker/compose/releases/download/1.25.3/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+            chmod +x /usr/local/bin/docker-compose
+      - setup_remote_docker
+      - run:
+          name: Launch stack
+          command: ./start-dev
+      - run:
+          name: Run functional testing
+          command: npm run test:func
+  scan:
+    docker:
+      - image: circleci/buildpack-deps:latest
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies and build project
+          command: npm install
+      - sonarcloud/scan
+
 workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
     main:
       jobs:
-        - build:
+        - scan:
             context: SonarCloud
+        - unit-test:
+        - functional-test:
