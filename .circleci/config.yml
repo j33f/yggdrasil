@@ -36,9 +36,6 @@ jobs:
       - image: circleci/buildpack-deps:latest
     steps:
       - checkout
-      - run:
-          name: Install dependencies and build project
-          command: npm install
       - sonarcloud/scan
 
 workflows:
