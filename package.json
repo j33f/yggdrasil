@@ -34,7 +34,7 @@
     "@unitTests": "unitTests"
   },
   "dependencies": {
-    "acorn": "^6.2.0",
+    "acorn": "^6.4.1",
     "asana": "^0.16.6",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.2",
