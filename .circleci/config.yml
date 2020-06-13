@@ -34,7 +34,5 @@ jobs:
 workflows:
     main:
       jobs:
-        - scan:
-            context: SonarCloud
         - unit-test
         - functional-test
