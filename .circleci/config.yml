@@ -16,6 +16,7 @@ jobs:
     docker:
       - image: circleci/buildpack-deps:latest
     steps:
+      - setup_remote_docker
       - checkout
       - run:
           name: Launch stack
