@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+chmod a+x bin/startServer
+
+chmod a+x docker-compose/scripts/*
+
+exec docker-compose -f docker-compose/ci.yml up

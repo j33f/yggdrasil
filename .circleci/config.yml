@@ -20,7 +20,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Launch stack
-          command: ./start-dev
+          command: ./start-ci
       - run:
           name: Run functional testing
           command: npm run test:func

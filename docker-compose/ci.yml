@@ -4,11 +4,11 @@ services:
   backend:
     image: j33f/node-docker-container:pupeteer-unoconv
     container_name: backend
-    command: sh -c 'chmod 755 /run.sh && /run.sh'
+    command: bash -c "chmod 775 /var/startScripts/runCustom.sh && /var/startScripts/runCustom.sh"
     volumes:
-      - "..:/var/app:delegated"
-      - "./scripts/run-concourse.sh:/run.sh:delegated"
-      - "./config/pm2-dev.json:/config/pm2.json:delegated"
+      - ..:/var/app:cached
+      - ./config/pm2-dev.json:/var/pm2Config/config.json:delegated
+      - ./scripts/run-ci.sh:/var/startScripts/runCustom.sh:delegated
     cap_add:
       - SYS_PTRACE
     depends_on:
@@ -42,8 +42,8 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - /data/mongo:/data/db:delegated
-      - /data/mongoDumps:/data/dumps:delegated
+      - ../data/mongo:/data/db:cached
+      - ../data/mongoDumps:/data/dumps:cached
     ports:
       - "27017:27017"
     environment:

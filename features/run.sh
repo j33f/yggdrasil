@@ -13,10 +13,10 @@ nyc --temp-directory ./.nyc_output.func --report-dir coverage.functional --repor
 printf "Awaiting to connect to the testing server"
 
 ATTEMPTSr=0
-MAX_ATTEMPTSr=60
+MAX_ATTEMPTS=60
 
 until $(curl --output /dev/null --silent --head --fail http://localhost:8843); do
-    if [ ${ATTEMPTSr} -eq ${MAX_ATTEMPTSr} ];then
+    if [ ${ATTEMPTSr} -eq ${MAX_ATTEMPTS} ];then
         echo '';
         echo 'Too much retries, giving up...'
         exit 1
