@@ -119,7 +119,7 @@ Then(/I get "([^"]*)" as the response content$/, function(text, callback) {
 
 Then(/^The file named "([^"]*)" does not exist$/, function(name, callback) {
   try {
-    if(existsSync('/var/yggdrasil/fileSystem/' + name)) {
+    if(existsSync('/var/fileStorage/' + name)) {
       callback(new Error('The file ' + name + 'should not exist !'));
     } else {
       callback();

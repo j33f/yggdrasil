@@ -35,7 +35,7 @@ class World {
    * @param content
    */
   createTextFile(name, content) {
-    const filepath = '/var/app/fileStorage/' + name;
+    const filepath = '/var/fileStorage/' + name;
     writeFileSync(filepath, content);
     this.filesCreated.push(filepath);
   }

@@ -1,31 +1,23 @@
 {
+  "serviceName": "Yggdrasil",
+  "withPuppeteer": true,
   "logger": {
     "level": "silly"
   },
   "port": 8842,
+  "api": {
+    "version": "0.1"
+  },
   "sessions": {
     "duration": "3h",
     "durationSeconds": 10800
   },
-  "api": {
-    "version": "v1"
-  },
   "authorizedFrontOrigins": [
-    "localhost:3000",
-    "tests.monchasseur.immo:3000",
-    "preprod.monchasseur.immo",
-    "crm.monchasseur.immo",
-    "sandbox.monchasseur.immo"
+    "localhost:3000"
   ],
   "fileStorage": {
     "type": "local",
-    "path": "/var/yggdrasil/fileStorage"
-  },
-  "AzureServer": {
-    "protocol": "https",
-    "host": "test-api-crm.azurewebsites.net",
-    "port": 443,
-    "apiBase": "/api/v1"
+    "path": "/var/fileStorage"
   },
   "redis": {
     "port": 6379,
@@ -43,7 +35,9 @@
     }
   },
   "sendmail": {
-    "name": "NetacCRMV2",
+    "name": "Yggdrasil",
+    "timezone": "europe/paris",
+    "tzid": "europe/paris",
     "pool": true,
     "host": "mailout",
     "port": 25,
@@ -53,46 +47,34 @@
   "mailjet": {
     "api": {
       "sms": {
-        "token": "408a31c0d9374fab8f106770bf2b366b"
+        "token": "xxxxxx"
       },
       "mail": {
-        "public": "d914b54626e3fa76a8f6b2a9e60c7c76",
-        "private": "406a91a8e50c8559172afe1dd137986c"
+        "public": "xxxxx",
+        "private": "xxxxx"
       }
     },
     "templates": {
-      "notificationDefault": 499319,
-      "ctaDefault": 500371,
-      "resetPassword": 536133,
-      "newAccount": 535553,
-      "newPassword": 847184,
-      "newProjectAttribution": 607979,
-      "milestoneCustomerAgenda": 630893,
-      "doOffer": 631185,
-      "editFinalInvoice": 631263,
-      "test": 651211,
-      "missionLetterSigned": 651591,
-      "payFinalInvoiceRequest": 672638,
-      "agreementSignedRetraction": 903016
+      "default": 123,
+      "newAccount": 123
     }
   },
   "sms": {
     "strategy": "mailjet",
-    "defaultFrom": "CRMmci"
+    "defaultFrom": "Yggdrasil"
   },
   "emails": {
     "strategy": "mailjet",
     "from": {
-      "name": "CRM",
-      "email": "crm@monchasseurimmo.com"
+      "name": "Yggdrasil",
+      "email": "thor@yggdrasil-backend.org"
     },
-    "testModeEmail": "devtest@monchasseurimmo.com",
-    "missionLetterEmail": "mandat@monchasseurimmo.com",
-    "missionLetterName": "Mandat"
+    "testModeEmail": "jeff@yggdrasil-backend.org"
   },
   "proxyMesh": {
-    "username": "CRMV2",
-    "password": "MédorLamiDuChasseur",
+    "activated": false,
+    "username": "yggdrasil",
+    "password": "ThorAllmighty",
     "entryPoints": [
       "fr.proxymesh.com:31280",
       "de.proxymesh.com:31280",
@@ -102,30 +84,16 @@
       "open.proxymesh.com:31280"
     ]
   },
-  "OpenDataLaposteAPiKey": "aa6d3b9f23d83064daf4c1853fd4b48a23bcafa38fcefc919f9d75ea",
-  "propertiesPlugEngine": {
-    "uri": "https://monespace.net-acheteur.com/rpc/plugin/Plug",
-    "paramName": "url",
-    "token": "q35sd43q5s4ds3gffgh4d3fg45sd3fs5sdf43qdezz"
-  },
+  "OpenDataLaposteAPiKey": "apikey",
   "geocoder": {
     "defaultStrategy": "google",
     "strategies": {
       "google": {
         "provider": "google",
         "httpAdapter": "https",
-        "apiKey": "AIzaSyDxcusZlAuy60wl6WshcC_0nzhukvi7SE0",
+        "apiKey": "apikey",
         "formatter": null
       }
-    }
-  },
-  "bugReport": {
-    "strategy": "asana",
-    "asana": {
-      "apiKey": "0/274d6c5c0c30a53a67ee16b9314184df",
-      "workspaceId": "161514807247726",
-      "projectId": "659595338164152",
-      "assigneeId": "412315172307062"
     }
   }
 }

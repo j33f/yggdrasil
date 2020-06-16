@@ -3,6 +3,9 @@
     "name"         : "Yggdrasil",
     "script"       : "bin/startServer",
     "args"         : [],
-    "kill_timeout" : 15000
+    "kill_timeout" : 15000,
+    "env": {
+      "NODE_ENV": "production"
+    }
   }]
 }

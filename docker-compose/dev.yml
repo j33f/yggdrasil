@@ -1,12 +1,13 @@
 version: '3'
 
 services:
-  backend:
+  yggdrasil:
     image: j33f/node-docker-container:pupeteer-unoconv
-    container_name: backend
+    container_name: yggdrasil
     command: bash -c "chmod 775 /var/startScripts/runCustom.sh && /var/startScripts/runCustom.sh"
     volumes:
       - ..:/var/app:cached
+      - ../fileStorage:/var/fileStorage
       - ./config/pm2-dev.json:/var/pm2Config/config.json:delegated
       - ./scripts/run-dev.sh:/var/startScripts/runCustom.sh:delegated
     cap_add:

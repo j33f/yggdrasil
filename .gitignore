@@ -18,23 +18,13 @@ lib-cov
 coverage
 
 # nyc test coverage
-.nyc_output
-
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-# Bower dependency directory (https://bower.io/)
-bower_components
+.nyc_output*
 
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
-
 # Dependency directories
 node_modules/
-jspm_packages/
 
 # Typescript v1 declaration files
 typings/
@@ -58,23 +48,12 @@ typings/
 .env
 
 .idea
-/bin/bulkImportLib/crm_raw_export/bulk
-/bin/bulkImportLib/crm_raw_export/*.bulk
-/bin/bulkImportLib/crm_raw_export/*.json
-/bin/bulkImportLib/crm_raw_export/*.zip
-/dataStorage/elasticSearch/nodes/
-/bin/migration/bulks/*.bulk
-/fileStorage/*.jpg
-/fileStorage/*.jpeg
-/fileStorage/*.png
-/fileStorage/*.pdf
-/fileStorage/*.mp4
-/frontend/*
-!/frontend/.gitkeep
-/lib/models/pdfTemplates/docxLM/~$mplate.docx
-/.crmrc
+
 /features/server.pid
 .nyc_output.func
 coverage.functional
 /ci/coverage.txt
 /data
+!/plugins/example/
+!/plugins/.gitkeep
+/plugins/*
