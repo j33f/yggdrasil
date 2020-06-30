@@ -50,7 +50,7 @@
     "dot-object": "^1.7.0",
     "express": "^4.16.3",
     "express-fileupload": "^1.1.6",
-    "express-jwt": "^5.3.1",
+    "express-jwt": "^6.0.0",
     "faker": "^4.1.0",
     "gauge": "^2.7.4",
     "generate-password": "^1.5.0",
