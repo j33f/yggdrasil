@@ -11,7 +11,8 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm install
-            - run: npm run test:unit
+            - run: npm i codecov
+            - run: npm run test:unit:codecov
   functional-test:
     docker:
       - image: circleci/buildpack-deps:latest
