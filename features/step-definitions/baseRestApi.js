@@ -130,12 +130,10 @@ Then(/^The file named "([^"]*)" does not exist$/, function(name, callback) {
 });
 
 Then('The {string} response is', function (type, docString, callback) {
-  switch (type.toLowerCase()) {
-    case 'json':
-      should(JSON.parse(this.response.response.body)).eqls(this.parseJSON(docString, callback));
-      break;
-    default:
-      should(this.response.response.body).eqls(docString);
+  if (type.toLowerCase() === 'json') {
+    should(JSON.parse(this.response.response.body)).eqls(this.parseJSON(docString, callback));
+  } else {
+    should(this.response.response.body).eqls(docString);
   }
   callback();
 });
