@@ -1,6 +1,5 @@
 # Yggdrasil
 
-https://img.shields.io/circleci/build/github/j33f/yggdrasil/master
 [![CircleCI](https://img.shields.io/circleci/build/github/j33f/yggdrasil/master)](https://circleci.com/gh/j33f/yggdrasil/tree/master)
 [![codecov](https://img.shields.io/codecov/c/github/j33f/yggdrasil?token=JRVW2FHCKL)](https://codecov.io/gh/j33f/yggdrasil)
 ![Depfu](https://img.shields.io/depfu/j33f/yggdrasil)
