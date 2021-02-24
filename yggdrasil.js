@@ -11,7 +11,10 @@ console.log(' \n' +
 
 // Yggdrasil is an express instance
 let yggdrasil = express();
+
 yggdrasil.rootPath = __dirname;
+
+yggdrasil.socketIOListeners = [];
 
 /**
  * Configuration loader
@@ -43,17 +46,9 @@ yggdrasil.uuid = (returnString = false) => {
 yggdrasil.lib = require('./lib');
 
 /**
- * Inject core components into yggdrasil
+ * Inject start yggdrasil
  */
-yggdrasil.lib.core.startup(yggdrasil);
-
-/**
- * Plugins integration
- */
-yggdrasil.lib.core.plugins(yggdrasil);
-yggdrasil.plugins.install.forEach(async func => {
-  await func();
-});
+yggdrasil.lib.startup(yggdrasil);
 
 /**
  * Allow to kill the current instance of Yggdrasil
@@ -62,24 +57,28 @@ yggdrasil.plugins.install.forEach(async func => {
  * @returns {Promise<void>}
  */
 yggdrasil.kill = async (_yggdrasil, callback) => {
-  _yggdrasil = await _yggdrasil.cleanupFunctionalTestingdata(_yggdrasil);
+  if (_yggdrasil.functionalTestingMode) {
+    _yggdrasil = await _yggdrasil.cleanupFunctionalTestingdata(_yggdrasil);
+  }
   _yggdrasil.server.serverObject.close(async function () {
     _yggdrasil.logger.info('The HTTP server is now closed');
     _yggdrasil.logger.info('Disconnect from Redis and Mongo...');
     await _yggdrasil.storage.mongo.disconnect();
-    await _yggdrasil.storage.redis.disconnect();
+    _yggdrasil.storage.redis.disconnect();
     _yggdrasil.logger.info('Yggdrasil will die soon.');
 
     if (callback) {
       callback();
     }
+    _yggdrasil.logger.info('Bye.');
+    process.exit(130);
   });
 };
 /**
  * Kill the current instance when the process receive the SIGTERM signal
  */
-process.on('SIGINT', () => {
-  yggdrasil.kill(yggdrasil);
+process.on('SIGINT', async () => {
+  await yggdrasil.kill(yggdrasil);
 });
 
 module.exports = yggdrasil;

@@ -122,12 +122,11 @@ class World {
    */
   getFixture(path, id) {
     let fixture;
-    get(this.fixtures, path).forEach(function(item) {
-      if (item._id === id) {
+    get(this.fixtures, path).forEach((item) => {
+      if (String(item._id) === String(id)) {
         fixture = item;
       }
     });
-
     return fixture;
   }
 
@@ -143,6 +142,7 @@ class World {
     compareTo = compareTo || this.response;
 
     should.exist(fixture);
+    console.log(compareTo, this.response);
     should.exist(compareTo);
 
     if (compareTo.id) {

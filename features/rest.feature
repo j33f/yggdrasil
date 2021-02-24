@@ -13,28 +13,30 @@ Feature: CRM REST API funtional tests
     Then I get a response with status code 401
 
   @cleanFsAfter
-  Scenario: Get an existing file or asset
-    Given I am not authenticated
-    And There is a file named "testFile.txt" containing "some content"
-    When I send a "GET" request to "/fs/testFile.txt" awaiting for "a text file"
-    Then I get a response with status code 200
-    And The response content type is "text/plain; charset=UTF-8"
-    And I get "some content" as the response content
+# TODO rewrite this scenario when file storage is good
+#  Scenario: Get an existing file or asset
+#    Given I am not authenticated
+#    And There is a file named "testFile.txt" containing "some content"
+#    When I send a "GET" request to "/fs/testFile.txt" awaiting for "a text file"
+#    Then I get a response with status code 200
+#    And The response content type is "text/plain; charset=UTF-8"
+#    And I get "some content" as the response content
 
-  Scenario: Get a missing file or asset
-    Given I am not authenticated
-    And The file named "testFile.txt" does not exist
-    When I send a "GET" request to "/fs/testFile.txt" awaiting for "a text file"
-    Then I get a response with status code 404
-    And The "JSON" response is
-      """
-      {
-        ok: false,
-        cause: "route",
-        rawResponse: "Error 404: Not found.",
-        readableresponse: "Nothing to see here..."
-      }
-      """
+# TODO rewrite this scenario when file storage is good
+#  Scenario: Get a missing file or asset
+#    Given I am not authenticated
+#    And The file named "testFile.txt" does not exist
+#    When I send a "GET" request to "/fs/testFile.txt" awaiting for "a text file"
+#    Then I get a response with status code 404
+#    And The "JSON" response is
+#      """
+#      {
+#        ok: false,
+#        cause: "route",
+#        rawResponse: "Error 404: Not found.",
+#        readableresponse: "Nothing to see here..."
+#      }
+#      """
 
   Scenario: Access to auth routes with OPTIONS method
     Given I am not authenticated

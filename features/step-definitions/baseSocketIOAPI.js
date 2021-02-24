@@ -185,7 +185,7 @@ Then('I receive a JWT error as a response', function (callback) {
   should.exist(this.errorResponse);
   should.not.exist(this.response);
   should(this.errorResponse).eqls({
-    message: 'No Authorization header was found',
+    message: 'no token provided',
     code: 'credentials_required',
     type: 'UnauthorizedError'
   });

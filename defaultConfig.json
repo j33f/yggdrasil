@@ -1,23 +1,34 @@
 {
   "serviceName": "Yggdrasil",
-  "withPuppeteer": true,
   "logger": {
     "level": "silly"
   },
   "port": 8842,
   "api": {
-    "version": "0.1"
+    "version": "0.1",
+    "unprotectedPath": []
   },
+  "allowOrigins": [
+    "localhost:8842",
+    "localhost:3000",
+    "localhost:8080"
+  ],
   "sessions": {
     "duration": "3h",
     "durationSeconds": 10800
   },
-  "authorizedFrontOrigins": [
-    "localhost:3000"
-  ],
+  "externalServerBaseURL": null,
   "fileStorage": {
-    "type": "local",
-    "path": "/var/fileStorage"
+    "strategies": {
+      "local": {
+        "lib": "Local",
+        "storageRootPath": "/var/app/fileStorage"
+      },
+      "S3": {
+
+      }
+    },
+    "strategy": "local"
   },
   "redis": {
     "port": 6379,
@@ -26,6 +37,8 @@
     "db": 0
   },
   "mongo": {
+    "retries": 30,
+    "retryDelay": 1000,
     "useSSL": false,
     "host": "mongo",
     "port": 27017,
@@ -59,41 +72,18 @@
       "newAccount": 123
     }
   },
-  "sms": {
-    "strategy": "mailjet",
-    "defaultFrom": "Yggdrasil"
-  },
   "emails": {
-    "strategy": "mailjet",
+    "strategy": "smtp",
     "from": {
       "name": "Yggdrasil",
       "email": "thor@yggdrasil-backend.org"
     },
     "testModeEmail": "jeff@yggdrasil-backend.org"
   },
-  "proxyMesh": {
-    "activated": false,
-    "username": "yggdrasil",
-    "password": "ThorAllmighty",
-    "entryPoints": [
-      "fr.proxymesh.com:31280",
-      "de.proxymesh.com:31280",
-      "nl.proxymesh.com:31280",
-      "uk.proxymesh.com:31280",
-      "ch.proxymesh.com:31280",
-      "open.proxymesh.com:31280"
-    ]
-  },
-  "OpenDataLaposteAPiKey": "apikey",
-  "geocoder": {
-    "defaultStrategy": "google",
-    "strategies": {
-      "google": {
-        "provider": "google",
-        "httpAdapter": "https",
-        "apiKey": "apikey",
-        "formatter": null
-      }
+  "OAuth": {
+    "google": {
+      "clientId": "YOUR CLIENT ID HERE",
+      "clientSecret": "YOUR CLIENT SECRET HERE"
     }
   }
 }

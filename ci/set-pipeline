@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [ "$#" -ne 1 ]; then
-  echo "Usage: $0 target" >&2
-  exit 1
-fi
-
-fly -t "$1" sp -p CRM-Backend -c ./pipeline.yml -l ./credentials.yml

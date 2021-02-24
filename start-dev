@@ -4,4 +4,4 @@ docker-compose -f docker-compose/dev.yml kill
 
 chmod a+x bin/startServer
 
-exec docker-compose -f docker-compose/dev.yml up
+exec docker-compose -f docker-compose/dev.yml up --remove-orphans

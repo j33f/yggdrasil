@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  yggdrasil:
-    image: j33f/node-docker-container:pupeteer-unoconv
-    container_name: yggdrasil
+  backend:
+    image: j33f/node-docker-container
+    container_name: backend
     command: bash -c "chmod 775 /var/startScripts/runCustom.sh && /var/startScripts/runCustom.sh"
     volumes:
       - ..:/var/app:cached
