@@ -1,5 +1,21 @@
 # Yggdrasil
 
+https://img.shields.io/circleci/build/github/j33f/yggdrasil/master
+[![CircleCI](https://img.shields.io/circleci/build/github/j33f/yggdrasil/master)](https://circleci.com/gh/j33f/yggdrasil/tree/master)
+[![codecov](https://img.shields.io/codecov/c/github/j33f/yggdrasil?token=JRVW2FHCKL)](https://codecov.io/gh/j33f/yggdrasil)
+![Depfu](https://img.shields.io/depfu/j33f/yggdrasil)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=alert_status)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=bugs)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=code_smells)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=sqale_index)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=ncloc)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=security_rating)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+
+[![License apache2](https://img.shields.io/github/license/j33f/yggdrasil?label=license)](https://choosealicense.com/licenses/apache-2.0/)
+
 Yggdrasil is a versatile ready to use backend.
 
 Currently, this project is in early alpha, need unit tests, documentation and some refactor.
@@ -16,7 +32,7 @@ This will launch the server stack (redis, mongo, backend) via docker (killing ex
 The server is started when you see this : 
 
 ```bash
-backend    | 0|Backend  | time: ⏲  Starting Server took: 14440.031ms
+backend    | 0|Backend  | time: ⏲  Starting Server took: 644.028ms
 backend    | 0|Backend  | info:  
 backend    | 0|Backend  |    __  __                         __   ____                    _             __
 backend    | 0|Backend  |   / / / /___     ____ _____  ____/ /  / __ \__  ______  ____  (_)___  ____ _/ /
@@ -49,7 +65,7 @@ You need to perform the tests directly into the /var/yggdrasil directory onto th
 
 ### Unit and Functional tests
 
-You first need to have a docker stack running then use the `npm test` command.
+You first need to have a docker stack running, then use the `npm test` command.
 
 The coverage reporter is [istambujs/nyc](https://github.com/istanbuljs/nyc)
 
