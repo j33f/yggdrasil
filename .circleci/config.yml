@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@1.1.6
+  sonarcloud: sonarsource/sonarcloud@1.0.1
 
 jobs:
   unit-test:
@@ -26,7 +27,8 @@ jobs:
           command: npm run test:func
 
 workflows:
-    main:
-      jobs:
-        - unit-test
-        - functional-test
+  main:
+    jobs:
+      - unit-test
+      - build:
+          context: SonarCloud
