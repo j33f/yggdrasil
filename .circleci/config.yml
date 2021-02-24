@@ -25,6 +25,15 @@ jobs:
       - run:
           name: Run functional testing
           command: npm run test:func
+  build:
+    docker:
+      - image: j33f/node-docker-container
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies and build project
+          command: npm install
+      - sonarcloud/scan
 
 workflows:
   main:
