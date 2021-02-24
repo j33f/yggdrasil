@@ -1,7 +1,6 @@
 version: 2.1
 orbs:
   node: circleci/node@1.1.6
-  sonarcloud: sonarsource/sonarcloud@1.0.1
 
 jobs:
   unit-test:
@@ -25,19 +24,8 @@ jobs:
       - run:
           name: Run functional testing
           command: npm run test:func
-  build:
-    docker:
-      - image: j33f/node-docker-container
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies and build project
-          command: npm install
-      - sonarcloud/scan
 
 workflows:
   main:
     jobs:
       - unit-test
-      - build:
-          context: SonarCloud
