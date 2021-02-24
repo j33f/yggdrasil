@@ -61,7 +61,7 @@
     "http-proxy-agent": "^4.0.1",
     "https-proxy-agent": "^5.0.0",
     "ical-toolkit": "^1.0.9",
-    "image-data-uri": "^1.0.0",
+    "image-data-uri": "^2.0.1",
     "image-size": "^0.9.3",
     "ioredis": "^4.22.0",
     "jsonwebtoken": "^8.5.1",
