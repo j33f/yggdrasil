@@ -2,7 +2,7 @@
 
 From the Yggdrasil point of view, a repository is a business object repository defining, at least, a way to store and retrieve data.
 
-The [Repository super class](./Repository.js) provide all the methods for CRUDLS :
+The [Repository super class](Repository/index.js) provide all the methods for CRUDLS :
 - create
 - read
 - delete
