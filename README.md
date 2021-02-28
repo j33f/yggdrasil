@@ -5,13 +5,14 @@
 ![Depfu](https://img.shields.io/depfu/j33f/yggdrasil)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=alert_status)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=bugs)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=code_smells)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=sqale_index)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=ncloc)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
 
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=security_rating)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=security_rating)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
 
 [![License apache2](https://img.shields.io/github/license/j33f/yggdrasil?label=license)](https://choosealicense.com/licenses/apache-2.0/)
 
