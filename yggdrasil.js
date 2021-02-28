@@ -3,11 +3,7 @@
 const ObjectID = require('mongodb').ObjectID;
 const express = require('express');
 
-console.log(' \n' +
-'.-.  .-..---.  .---. .----. .----.   .--.   .----..-..-.   \n' +
-' \\ \\/ //   __}/   __}| {}  \\| {}  } / {} \\ { {__  | || |   \n' +
-'  }  { \\  {_ }\\  {_ }|     /| .-. \\/  /\\  \\.-._} }| || `--.\n' +
-'  `--\'  `---\'  `---\' `----\' `-\' `-\'`-\'  `-\'`----\' `-\'`----\'');
+console.log('🌳   Starting Yggdrasil');
 
 // Yggdrasil is an express instance
 let yggdrasil = express();
@@ -61,16 +57,16 @@ yggdrasil.kill = async (_yggdrasil, callback) => {
     _yggdrasil = await _yggdrasil.cleanupFunctionalTestingdata(_yggdrasil);
   }
   _yggdrasil.server.serverObject.close(async function () {
-    _yggdrasil.logger.info('The HTTP server is now closed');
-    _yggdrasil.logger.info('Disconnect from Redis and Mongo...');
+    _yggdrasil.logger.info('🚧  The HTTP server is now closed');
+    _yggdrasil.logger.info('🔌  Disconnect from Redis and Mongo...');
     await _yggdrasil.storage.mongo.disconnect();
     _yggdrasil.storage.redis.disconnect();
-    _yggdrasil.logger.info('Yggdrasil will die soon.');
+    _yggdrasil.logger.info('💀  Yggdrasil will die soon.');
 
     if (callback) {
       callback();
     }
-    _yggdrasil.logger.info('Bye.');
+    _yggdrasil.logger.info('🖖  Bye.');
     process.exit(130);
   });
 };

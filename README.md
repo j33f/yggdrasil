@@ -31,16 +31,9 @@ This will launch the server stack (redis, mongo, backend) via docker (killing ex
 
 The server is started when you see this : 
 
-```bash
-backend    | time: ⏲  Starting Server took: 468.576ms
-backend    | info:  
-backend    |    __  __                         __   ____                    _             __
-backend    |   / / / /___     ____ _____  ____/ /  / __ \__  ______  ____  (_)___  ____ _/ /
-backend    |  / / / / __ \   / __ `/ __ \/ __  /  / /_/ / / / / __ \/ __ \/ / __ \/ __ `/ / 
-backend    | / /_/ / /_/ /  / /_/ / / / / /_/ /  / _, _/ /_/ / / / / / / / / / / / /_/ /_/  
-backend    | \____/ .___/   \__,_/_/ /_/\__,_/  /_/ |_|\__,_/_/ /_/_/ /_/_/_/ /_/\__, (_)   
-backend    |     /_/                                                            /____/      
-backend    | _______________________________________________________________________________
+```
+backend    | time: ⏱  Starting Server took: 747.483ms
+backend    | info: 🤘  Yggdrasil is up and running !
 
 ```
 
