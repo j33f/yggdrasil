@@ -5,13 +5,14 @@
 ![Depfu](https://img.shields.io/depfu/j33f/yggdrasil)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=alert_status)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=bugs)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=code_smells)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=sqale_index)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=ncloc)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
 
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=security_rating)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=security_rating)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=j33f_yggdrasil&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=j33f_yggdrasil)
 
 [![License apache2](https://img.shields.io/github/license/j33f/yggdrasil?label=license)](https://choosealicense.com/licenses/apache-2.0/)
 
@@ -31,15 +32,16 @@ This will launch the server stack (redis, mongo, backend) via docker (killing ex
 The server is started when you see this : 
 
 ```bash
-backend    | 0|Backend  | time: ⏲  Starting Server took: 644.028ms
-backend    | 0|Backend  | info:  
-backend    | 0|Backend  |    __  __                         __   ____                    _             __
-backend    | 0|Backend  |   / / / /___     ____ _____  ____/ /  / __ \__  ______  ____  (_)___  ____ _/ /
-backend    | 0|Backend  |  / / / / __ \   / __ `/ __ \/ __  /  / /_/ / / / / __ \/ __ \/ / __ \/ __ `/ / 
-backend    | 0|Backend  | / /_/ / /_/ /  / /_/ / / / / /_/ /  / _, _/ /_/ / / / / / / / / / / / /_/ /_/  
-backend    | 0|Backend  | \____/ .___/   \__,_/_/ /_/\__,_/  /_/ |_|\__,_/_/ /_/_/ /_/_/_/ /_/\__, (_)   
-backend    | 0|Backend  |     /_/                                                            /____/      
-backend    | 0|Backend  | _______________________________________________________________________________
+backend    | time: ⏲  Starting Server took: 468.576ms
+backend    | info:  
+backend    |    __  __                         __   ____                    _             __
+backend    |   / / / /___     ____ _____  ____/ /  / __ \__  ______  ____  (_)___  ____ _/ /
+backend    |  / / / / __ \   / __ `/ __ \/ __  /  / /_/ / / / / __ \/ __ \/ / __ \/ __ `/ / 
+backend    | / /_/ / /_/ /  / /_/ / / / / /_/ /  / _, _/ /_/ / / / / / / / / / / / /_/ /_/  
+backend    | \____/ .___/   \__,_/_/ /_/\__,_/  /_/ |_|\__,_/_/ /_/_/ /_/_/_/ /_/\__, (_)   
+backend    |     /_/                                                            /____/      
+backend    | _______________________________________________________________________________
+
 ```
 
 ## Testing
