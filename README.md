@@ -32,15 +32,16 @@ This will launch the server stack (redis, mongo, backend) via docker (killing ex
 The server is started when you see this : 
 
 ```bash
-backend    | 0|Backend  | time: ⏲  Starting Server took: 644.028ms
-backend    | 0|Backend  | info:  
-backend    | 0|Backend  |    __  __                         __   ____                    _             __
-backend    | 0|Backend  |   / / / /___     ____ _____  ____/ /  / __ \__  ______  ____  (_)___  ____ _/ /
-backend    | 0|Backend  |  / / / / __ \   / __ `/ __ \/ __  /  / /_/ / / / / __ \/ __ \/ / __ \/ __ `/ / 
-backend    | 0|Backend  | / /_/ / /_/ /  / /_/ / / / / /_/ /  / _, _/ /_/ / / / / / / / / / / / /_/ /_/  
-backend    | 0|Backend  | \____/ .___/   \__,_/_/ /_/\__,_/  /_/ |_|\__,_/_/ /_/_/ /_/_/_/ /_/\__, (_)   
-backend    | 0|Backend  |     /_/                                                            /____/      
-backend    | 0|Backend  | _______________________________________________________________________________
+backend    | time: ⏲  Starting Server took: 468.576ms
+backend    | info:  
+backend    |    __  __                         __   ____                    _             __
+backend    |   / / / /___     ____ _____  ____/ /  / __ \__  ______  ____  (_)___  ____ _/ /
+backend    |  / / / / __ \   / __ `/ __ \/ __  /  / /_/ / / / / __ \/ __ \/ / __ \/ __ `/ / 
+backend    | / /_/ / /_/ /  / /_/ / / / / /_/ /  / _, _/ /_/ / / / / / / / / / / / /_/ /_/  
+backend    | \____/ .___/   \__,_/_/ /_/\__,_/  /_/ |_|\__,_/_/ /_/_/ /_/_/_/ /_/\__, (_)   
+backend    |     /_/                                                            /____/      
+backend    | _______________________________________________________________________________
+
 ```
 
 ## Testing
