@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/startServer",
+    "start": "./start-dev",
     "test": "npm run test:lint && npm run test:unit && [ -f /run.sh ] && npm run test:functional || docker exec -ti backend bash -c 'cd /var/app && npm run test:functional' && npm run coverage-combine",
     "test:lint": "eslint --max-warnings=0 ./lib ./yggdrasil.js ./features",
     "test:unit": "nyc --temp-directory ./.nyc_output --report-dir coverage --reporter=text-summary --reporter=lcov mocha && npm run unit:coverage-summary",
