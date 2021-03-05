@@ -1,12 +1,18 @@
 'use strict';
 
+console.log('info: 🌳   Starting Yggdrasil');
+console.log('info: 🌱   Planting the seed... (loading the config and core lib)');
+console.time('time: ⏱   Planting and make the seed to grow took');
+
 const ObjectID = require('mongodb').ObjectID;
 const express = require('express');
 
-console.log('🌳   Starting Yggdrasil');
-
 // Yggdrasil is an express instance
 let yggdrasil = express();
+yggdrasil._startedAt = {
+  time: Date.now(),
+  hr: process.hrtime()
+};
 
 yggdrasil.rootPath = __dirname;
 
@@ -42,11 +48,6 @@ yggdrasil.uuid = (returnString = false) => {
 yggdrasil.lib = require('./lib');
 
 /**
- * Inject start yggdrasil
- */
-yggdrasil.lib.startup(yggdrasil);
-
-/**
  * Allow to kill the current instance of Yggdrasil
  * @param _yggdrasil
  * @param callback
@@ -71,10 +72,17 @@ yggdrasil.kill = async (_yggdrasil, callback) => {
   });
 };
 /**
- * Kill the current instance when the process receive the SIGTERM signal
+ * Kill the current instance when the process receive the SIGINT signal
  */
 process.on('SIGINT', async () => {
   await yggdrasil.kill(yggdrasil);
 });
+
+console.timeEnd('time: ⏱   Planting and make the seed to grow took');
+
+/**
+ * Start Yggdrasil !
+ */
+yggdrasil.lib.startup(yggdrasil);
 
 module.exports = yggdrasil;

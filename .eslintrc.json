@@ -41,7 +41,6 @@
     "no-undef-init": 1,
     "no-unreachable": 2,
     "no-unused-expressions": 0,
-    "chai-friendly/no-unused-expressions": [2, { "allowShortCircuit": true }],
     "no-useless-call": 2,
     "no-with": 2,
     "quotes": [2, "single"],
@@ -56,7 +55,7 @@
     "es6": true,
     "mocha": true
   },
-  "plugins": ["chai-friendly"],
+  "plugins": [],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2018

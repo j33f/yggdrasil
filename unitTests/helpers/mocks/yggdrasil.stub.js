@@ -31,7 +31,7 @@ yggdrasil.config = require('@unitTests/testConfig.json');
 yggdrasil.socketIOListeners = [];
 
 // Instantiate repositories
-yggdrasil.repositories = new yggdrasil.lib.models.repositories(yggdrasil);
+yggdrasil.repositories = new yggdrasil.lib.businessObjects.repositories(yggdrasil);
 
 // Stubbing logger
 const loggerMembers = ['error', 'warn'];
@@ -77,13 +77,6 @@ Object.keys(yggdrasil.storage).forEach(storage => {
   });
 });
 
-// Stubbing yggdrasil.proxy
-userFunctions(yggdrasil.proxy).forEach(member => {
-  if (member !== 'yggdrasil') {
-    sinon.stub(yggdrasil.proxy, member);
-  }
-});
-
 // Stubbing controllers
 Object.keys(yggdrasil.lib.controllers).forEach(controller => {
   const members = userFunctions(yggdrasil.lib.controllers[controller]);
@@ -91,17 +84,6 @@ Object.keys(yggdrasil.lib.controllers).forEach(controller => {
   members.forEach(member => {
     if (member !== 'yggdrasil') {
       sinon.stub(yggdrasil.lib.controllers[controller], member);
-    }
-  });
-});
-
-// Stubbing LPM controllers
-Object.keys(yggdrasil.lib.controllers.lpm).forEach(controller => {
-  const members = userFunctions(yggdrasil.lib.controllers.lpm[controller]);
-
-  members.forEach(member => {
-    if (member !== 'yggdrasil') {
-      sinon.stub(yggdrasil.lib.controllers.lpm[controller], member);
     }
   });
 });

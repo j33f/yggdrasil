@@ -1,0 +1,65 @@
+{
+  "tree": {
+    "root": {
+      "powerUsers": {},
+      "simpleUsers": {},
+      "anonymous": null
+    }
+  },
+  "rules": {
+    "types": {
+      "auth": {
+        "*": {
+          "create": ["owner"],
+          "read": ["owner"],
+          "update": ["owner"],
+          "delete": ["owner"],
+          "list": ["owner"],
+          "search": ["owner"]
+        }
+      },
+      "users": {
+        "*": {
+          "create": ["parent"],
+          "read": ["parent","owner", "creator"],
+          "update": ["parent","owner", "creator"],
+          "delete": ["parent", "creator"],
+          "list": ["parent", "children", "same", "creator"],
+          "search": ["parent", "same", "creator"]
+        },
+        "simpleUsers": {
+          "create": ["powerUsers"],
+          "read": ["owner", "creator"],
+          "update": ["owner", "creator"],
+          "delete": ["owner", "creator"],
+          "list": ["owner", "creator"],
+          "search": ["owner", "creator"]
+        },
+        "powerUsers": {
+          "create": ["parent"],
+          "read": ["parent", "same", "creator"],
+          "update": ["parent", "creator"],
+          "delete": ["owner", "creator"],
+          "list": ["owner", "creator"],
+          "search": ["owner", "creator"]
+        }
+      },
+      "files": {
+        "*": {
+          "create": ["owner"],
+          "read": ["owner"],
+          "update": ["owner"],
+          "delete": ["owner"],
+          "list": ["owner"],
+          "search": ["owner"]
+        }
+      }
+    },
+    "subObjects": {
+      "users": {
+        "identity": ["parent", "owner"],
+        "contact": ["parent", "owner"]
+      }
+    }
+  }
+}

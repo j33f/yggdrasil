@@ -47,7 +47,7 @@ Just run `npm run test:unit`
 
 The unit test coverage details information are located in the coverage dir.
 
-The tests are performed by mocha, and use [sinon](https://sinonjs.org), [chai](https://www.chaijs.com) and [should](https://shouldjs.github.io).
+The tests are performed by [mocha](https://mochajs.org), and use [sinon](https://sinonjs.org), [should](https://shouldjs.github.io) and [rewire](https://www.npmjs.com/package/rewire).
 
 ### Functional tests only
 
