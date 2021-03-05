@@ -21,25 +21,37 @@ Yggdrasil is a versatile ready to use backend.
 Currently, this project is in early alpha, need unit tests, documentation and some refactor.
 DO NOT USE AS IS !!!!
 
-## Start in dev  mode : 
+## Start in dev mode : 
 
 You will need to have Docker and Docker-compose installed and configured.
 
 ```bash
-./start-dev
+npm start
 ```
 
-This will launch the server stack (redis, mongo, backend) via docker (killing existing containers if needed)
+This will launch the server stack (redis, mongo, backend) via docker (killing existing containers if needed) using 
+the [./start-dev](./start-dev) script
 
 The server is started when you see this : 
 
 ```
-backend    | time: ⏱  Starting Server took: 747.483ms
+backend    | time: ⏱  Starting Yggdrasil took 4s213ms
 backend    | info: 🤘  Yggdrasil is up and running !
-
 ```
 
 ## Testing
+
+### Unit and Functional tests
+
+You first need to have the stack running (for functional tests), then use the `npm test` command.
+
+The coverage reporter is [istambujs/nyc](https://github.com/istanbuljs/nyc)
+
+### Linter only
+
+Just run `npm run test:lint`
+
+The tests are performed by [eslint](https://eslint.org/), and use [.eslintrc.json](./.eslintrc.json) file.
 
 ### Unit tests only
 
@@ -47,7 +59,13 @@ Just run `npm run test:unit`
 
 The unit test coverage details information are located in the coverage dir.
 
-The tests are performed by [mocha](https://mochajs.org), and use [sinon](https://sinonjs.org), [should](https://shouldjs.github.io) and [rewire](https://www.npmjs.com/package/rewire).
+The tests are performed by [mocha](https://mochajs.org), and use [sinon](https://sinonjs.org), 
+[should](https://shouldjs.github.io) and [rewire](https://www.npmjs.com/package/rewire).
+
+The tests files resides alongside with the files they are testing. Some helpers can be found in the 
+[unitTests](./unitTests) directory.
+
+The mocha config used can be found in the [.mocharc.yml](./.mocharc.yml) file.
 
 ### Functional tests only
 
@@ -55,15 +73,11 @@ Just run `npm run test:func`
 
 The functional test coverage details information are located in the coverage.functional dir.
 
-The tests are performed by [cucumber](https://github.com/cucumber/cucumber-js)
+The tests are performed by [cucumber](https://github.com/cucumber/cucumber-js) and the features files can be 
+obviously found in the [features](./features) directory.
 
-You need to perform the tests directly into the /var/yggdrasil directory onto the docker container or just have a started stack (the npm command is smart enough to launch the tests into the container by itself).
-
-### Unit and Functional tests
-
-You first need to have a docker stack running, then use the `npm test` command.
-
-The coverage reporter is [istambujs/nyc](https://github.com/istanbuljs/nyc)
+You need to perform the tests directly into the `/var/yggdrasil` directory onto the docker container or just have 
+a started stack (the npm command is smart enough to launch the tests into the container by itself).
 
 ## Features
 
@@ -97,7 +111,8 @@ Yggdrasil serves HTTP routes via the good old [Express](https://www.npmjs.com/pa
 
 Both of them are secured by an authorization system based on [JWT](https://jwt.io/);
 
-By default, all routes ans SocketIO accesses requires the JWT token to be present (and valid) except the ones used to sign-in, re-create a password, or public files
+By default, all routes ans SocketIO accesses requires the JWT token to be present (and valid) except the ones used to 
+sign-in, re-create a password, or public files
 
 ### Data storage
 
@@ -110,6 +125,10 @@ Redis is also used to store user sessions.
 
 By default, the local strategy is used, and the files are stored into the container where Yggdrasil lives.
 A S3 storage strategy is in development.
+
+### Rights management
+
+Users rights are managed by an advanced yet simple "policies tree" and allow you to fine-tune things to meet your needs.
 
 ## Troubleshoot
 
