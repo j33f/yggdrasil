@@ -1,3 +1,4 @@
+/.idea/
 /.circleci/
 /.nyc_output.func/
 /coverage.functional/
@@ -8,6 +9,7 @@
 /.prettierrc
 /Dockerfile
 /start-dev
+/start-uat
 /sonar-project.properties
 /.eslintrc.json
 /start-ci
@@ -16,6 +18,15 @@
 /mongoDump
 /.editorconfig
 /start-build
-/README.md
 /fileStorage/
 /.git/
+/features/
+/unitTests/
+/**/*.test.js
+/**/.DS_Store
+/.dockerignore
+/.mocharc.yml
+/node_modules
+/**/*.md
+/**/.gitkeep
+/.yggdrasilrc
