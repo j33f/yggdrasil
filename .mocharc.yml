@@ -1,3 +1,2 @@
 spec: lib/**/*.test.js
 timeout: 10000
-parallel: true
