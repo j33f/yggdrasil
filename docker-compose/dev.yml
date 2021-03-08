@@ -4,6 +4,7 @@ services:
   backend:
     image: j33f/node-docker-container
     container_name: backend
+    restart: always
     command: bash -c "chmod 775 /var/startScripts/runCustom.sh && /var/startScripts/runCustom.sh"
     volumes:
       - ..:/var/app:cached

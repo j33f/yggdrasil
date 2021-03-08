@@ -4,6 +4,7 @@ services:
   backend:
     build: ..
     container_name: backend
+    restart: always
     volumes:
       - ../fileStorage:/var/fileStorage:defered
       - ../.yggdrasilrc:/var/app/.yggdrasilrc:defered
