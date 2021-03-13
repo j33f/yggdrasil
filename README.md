@@ -18,8 +18,12 @@
 
 Yggdrasil is a versatile ready to use backend.
 
-Currently, this project is in early alpha, need unit tests, documentation and some refactor.
+:warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning:
+
+In developpment !
 DO NOT USE AS IS !!!!
+
+:warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning::warning:
 
 ## Start in dev mode : 
 
