@@ -69,7 +69,7 @@ Feature: CRM REST API funtional tests
     When I authenticate myself as "thor@yggdrasil.com" with password "thor" which exist
     Then I get a response with status code 200
     And I get a bearer from the server
-    And I get a user object with id "5c61894fd6b0362d7b5fbe8d" into "user"
+    And I get a session referencing the following userId "5c61894fd6b0362d7b5fbe8d"
     And A cookie named "Authorization" matching "Bearer%20[^;]*" has been set by the server
 
   Scenario: Authentication with bad credentials

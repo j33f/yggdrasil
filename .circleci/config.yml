@@ -29,3 +29,4 @@ workflows:
   main:
     jobs:
       - unit-test
+      - functional-test

@@ -142,7 +142,6 @@ class World {
     compareTo = compareTo || this.response;
 
     should.exist(fixture);
-    console.log(compareTo, this.response);
     should.exist(compareTo);
 
     if (compareTo.id) {
