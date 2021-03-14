@@ -4,7 +4,7 @@ services:
   backend:
     image: j33f/node-docker-container
     container_name: backend
-    command: bash -c "mv /var/pm2Config/pm2-dev.json /var/pm2Config/config.json && chmod 775 /var/startScripts/run-ci.sh && /var/startScripts/run-ci.sh"
+    command: bash -c "ls -al /var && mv /var/pm2Config/pm2-dev.json /var/pm2Config/config.json && chmod 775 /var/startScripts/run-ci.sh && /var/startScripts/run-ci.sh"
     volumes:
       - ..:/var/app:cached
       - ./config:/var/pm2Config
