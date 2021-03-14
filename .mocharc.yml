@@ -1,3 +1,2 @@
 spec: lib/**/*.test.js
 timeout: 10000
-require: unitTests/helpers/mocha.hooks.js

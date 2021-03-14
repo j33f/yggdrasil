@@ -1,12 +1,13 @@
 'use strict';
-const sinon = require('sinon');
 
-module.exports = {
-  get: sinon.stub().resolves(),
-  set: sinon.stub().resolves(),
-  delete: sinon.stub().resolves(),
-  rawGet: sinon.stub().resolves(),
-  rawSet: sinon.stub().resolves(),
-  rawDelete: sinon.stub().resolves(),
-  flush: sinon.stub().resolves()
+module.exports = sandbox => {
+  return {
+    get: sandbox.stub().resolves(),
+    set: sandbox.stub().resolves(),
+    delete: sandbox.stub().resolves(),
+    rawGet: sandbox.stub().resolves(),
+    rawSet: sandbox.stub().resolves(),
+    rawDelete: sandbox.stub().resolves(),
+    flush: sandbox.stub().resolves()
+  };
 };

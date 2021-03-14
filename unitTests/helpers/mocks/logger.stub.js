@@ -1,15 +1,15 @@
 'use strict';
-const sinon = require('sinon');
 
-module.exports = {
-  info: sinon.stub(),
-  log: sinon.stub(),
-  warn: sinon.stub(),
-  error: sinon.stub(),
-  addListener: yggdrasil => {
-    yggdrasil.listen('log', (level, ...message) => {
-      yggdrasil.logger.log(level, castArray(message).join(' '));
-    });
-  }
-
+module.exports = sandbox => {
+  return {
+    info: sandbox.stub(),
+    log: sandbox.stub(),
+    warn: sandbox.stub(),
+    error: sandbox.stub(),
+    addListener: yggdrasil => {
+      yggdrasil.listen('log', (level, ...message) => {
+        yggdrasil.logger.log(level, castArray(message).join(' '));
+      });
+    }
+  };
 };

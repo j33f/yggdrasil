@@ -4,9 +4,6 @@
  */
 require('module-alias/register');
 
-const
-  sinon = require('sinon');
-
 let yggdrasil = require('@root/yggdrasil');
 
 const isGetter = (x, name) => (Object.getOwnPropertyDescriptor(x, name) || {}).get;

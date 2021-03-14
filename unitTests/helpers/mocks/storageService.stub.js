@@ -1,15 +1,16 @@
 'use strict';
-const sinon = require('sinon');
 
-module.exports = {
-  get: sinon.stub(),
-  set: sinon.stub(),
-  delete: sinon.stub(),
-  search: sinon.stub(),
-  list: sinon.stub(),
-  walk: sinon.stub(),
-  getDistinct: sinon.stub(),
-  cache: sinon.stub(),
-  getCache: sinon.stub(),
-  delCache: sinon.stub()
+module.exports = sandbox => {
+  return {
+    get: sandbox.stub(),
+    set: sandbox.stub(),
+    delete: sandbox.stub(),
+    search: sandbox.stub(),
+    list: sandbox.stub(),
+    walk: sandbox.stub(),
+    getDistinct: sandbox.stub(),
+    cache: sandbox.stub(),
+    getCache: sandbox.stub(),
+    delCache: sandbox.stub()
+  };
 };
