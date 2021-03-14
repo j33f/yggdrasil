@@ -16,19 +16,25 @@ jobs:
           name: Linter
           command: npm run test:lint
       - run:
-          name: Uni tests with Codecov reporting
+          name: Unit tests with Codecov reporting
           command: npm run test:unit:codecov
   functional-test:
     docker:
       - image: circleci/buildpack-deps:latest
     steps:
+      - run:
+          name: Install docker-compose
+          command: |
+             curl -L https://github.com/docker/compose/releases/download/1.28.5/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+             chmod +x ~/docker-compose
+             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - setup_remote_docker
       - checkout
       - run:
           name: Launch stack
           command: ./start-ci
       - run:
-          name: Run functional testing
+          name: Functional tests
           command: npm run test:func
 
 workflows:
