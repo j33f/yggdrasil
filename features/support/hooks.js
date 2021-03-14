@@ -1,7 +1,7 @@
 'use strict';
 
 const
-  { After } = require('cucumber'),
+  { After } = require('@cucumber/cucumber'),
   { unlinkSync } = require('fs'),
   { remove } = require('lodash');
 

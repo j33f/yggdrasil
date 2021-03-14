@@ -4,7 +4,7 @@ Feature: CRM REST API funtional tests
     Given I am not authenticated
     When I send a "GET" request to "/" awaiting for "JSON"
     Then I get a response with status code 200
-    And I get the current server version
+    And The response content type is "application/json; charset=utf-8"
     And I get the current server time
 
   Scenario: Get the /api route
@@ -45,21 +45,22 @@ Feature: CRM REST API funtional tests
     And The response headers contain
       """
       { "content-security-policy":
-         "default-src 'self'; style-src 'self' 'localhost:3000'; upgrade-insecure-requests",
-        "x-content-security-policy":
-         "default-src 'self'; style-src 'self' 'localhost:3000'; upgrade-insecure-requests",
-        "x-webkit-csp":
-         "default-src 'self'; style-src 'self' 'localhost:3000'; upgrade-insecure-requests",
+          "default-src 'self';style-src 'self' localhost:8842 localhost:3000 localhost:8080;upgrade-insecure-requests true",
         "x-dns-prefetch-control": "off",
+        "expect-ct": "max-age=0",
+        "x-frame-options": "SAMEORIGIN",
         "strict-transport-security": "max-age=15552000; includeSubDomains",
         "x-download-options": "noopen",
         "x-content-type-options": "nosniff",
-        "x-xss-protection": "1; mode=block",
-        "access-control-allow-origin": "localhost:3000",
+        "x-permitted-cross-domain-policies": "none",
+        "referrer-policy": "no-referrer",
+        "x-xss-protection": "0",
+        "access-control-allow-origin": "localhost:8842,localhost:3000,localhost:8080",
         "access-control-allow-credentials": "true",
         "access-control-allow-methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
         "access-control-allow-headers":
-         "Origin, X-Requested-With, Content-Type, Accept, Authorization, Cache-Control",
+          "Origin, X-Requested-With, Content-Type, Accept, Authorization, Cache-Control",
+        "allow": "POST"
       }
       """
     

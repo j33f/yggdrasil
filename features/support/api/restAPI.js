@@ -1,12 +1,13 @@
 'use strict';
 
-const rp = require('request-promise');
+const request = require('axios');
 
 let api = {};
 
-api.get = (uri, bearer, json) => {
+api.get = (url, bearer, json) => {
   let options = {
-    uri: uri,
+    method: 'get',
+    url: url,
     resolveWithFullResponse: true,
     json: (json)
   };
@@ -15,13 +16,13 @@ api.get = (uri, bearer, json) => {
       'Authorization': 'Bearer ' + bearer
     };
   }
-  return rp(options);
+  return request(options);
 };
 
-api.post = (uri, payload, bearer, json) => {
+api.post = (url, payload, bearer, json) => {
   let options = {
-    method: 'POST',
-    uri: uri,
+    method: 'post',
+    url: url,
     body: payload,
     resolveWithFullResponse: true,
     json: (json)
@@ -31,22 +32,21 @@ api.post = (uri, payload, bearer, json) => {
       'Authorization': 'Bearer ' + bearer
     };
   }
-  return rp(options);
+  return request(options);
 };
 
 /**
  * Post with 'content-type': 'yggdrasillication/x-www-form-urlencoded' header
- * @param uri
+ * @param url
  * @param payload
  * @param bearer
  * @param json
  */
-api.postForm = (uri, payload, bearer, json) => {
+api.postForm = (url, payload, bearer, json) => {
   let options = {
-    method: 'POST',
-    uri: uri,
-    form: payload,
-    resolveWithFullResponse: true,
+    method: 'post',
+    url: url,
+    data: payload,
     json: (json)
   };
   if (bearer) {
@@ -54,42 +54,40 @@ api.postForm = (uri, payload, bearer, json) => {
       'Authorization': 'Bearer ' + bearer
     };
   }
-  return rp(options);
+  return request(options);
 };
 
 /**
  * Post with 'content-type': 'multipart/form-data' header
- * @param uri
+ * @param url
  * @param files
  * @param bearer
  * @param json
  */
-api.postFiles= (uri, files, bearer, json) => {
+api.postFiles= (url, files, bearer, json) => {
   let options = {
-    method: 'POST',
-    uri: uri,
+    method: 'post',
+    url: url,
     formData: files,
-    resolveWithFullResponse: true,
-    json: (json)
+    json: (json),
+    headers: {'Content-Type': 'multipart/form-data'}
   };
   if (bearer) {
-    options.headers = {
-      'Authorization': 'Bearer ' + bearer
-    };
+    options.headers.Authorization = 'Bearer ' + bearer
   }
-  return rp(options);
+
+  return request(options);
 };
 
-api.options= (uri, headers, json) => {
+api.options= (url, headers, json) => {
   let options = {
-    method: 'OPTIONS',
-    uri: uri,
-    resolveWithFullResponse: true,
+    method: 'options',
+    url: url,
     headers: headers || {},
     json: (json)
   };
 
-  return rp(options);
+  return request(options);
 };
 
 module.exports = api;

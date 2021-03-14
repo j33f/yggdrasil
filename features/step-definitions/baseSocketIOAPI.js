@@ -1,7 +1,7 @@
 'use strict';
 
 const
-  { Then } = require('cucumber'),
+  { Then } = require('@cucumber/cucumber'),
   { get, cloneDeep } = require('lodash'),
   should = require('should');
 

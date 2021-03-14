@@ -1,5 +1,5 @@
 const
-  { setWorldConstructor } = require('cucumber'),
+  { setWorldConstructor } = require('@cucumber/cucumber'),
   { writeFileSync } = require('fs'),
   JSON5 = require('json5'),
   { get } = require('lodash'),

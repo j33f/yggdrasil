@@ -1,7 +1,7 @@
 'use strict';
 
 const
-  { Given, Then, When } = require('cucumber'),
+  { Given, Then, When } = require('@cucumber/cucumber'),
   { existsSync } = require('fs'),
   should = require('should');
 
@@ -87,17 +87,13 @@ When(/I send [an]{1,2} "([^"]*)" request to "([^"]*)" awaiting for "([^"]*)"$/, 
 });
 
 Then('I get a response with status code {int}', function (int, callback) {
-  should(this.response.statusCode).eqls(int);
-  callback();
-});
-
-Then('I get the current server version', function(callback) {
-  should(this.response.body.server.version).not.be.undefined();
+  const status = this.response.status || this.response.response.status;
+  should(status).eqls(int);
   callback();
 });
 
 Then('I get the current server time', function (callback) {
-  should(this.response.body.server.currentTime).not.be.undefined();
+  should(this.response.data.server.currentTime).not.be.undefined();
   callback();
 });
 
@@ -107,8 +103,8 @@ When(/^There is a file named "([^"]*)" containing "([^"]*)"$/, function(name, co
   callback();
 });
 
-Then(/^The response content type is "([^"]*)"$/, function(contentType, callback) {
-  should(this.response.caseless.dict['content-type']).eqls(contentType);
+Then('The response content type is {string}', function(contentType, callback) {
+  should(this.response.headers['content-type']).eqls(contentType);
   callback();
 });
 
@@ -131,9 +127,9 @@ Then(/^The file named "([^"]*)" does not exist$/, function(name, callback) {
 
 Then('The {string} response is', function (type, docString, callback) {
   if (type.toLowerCase() === 'json') {
-    should(JSON.parse(this.response.response.body)).eqls(this.parseJSON(docString, callback));
+    should(JSON.parse(this.response.data.body)).eqls(this.parseJSON(docString, callback));
   } else {
-    should(this.response.response.body).eqls(docString);
+    should(this.response.data.body).eqls(docString);
   }
   callback();
 });
@@ -145,22 +141,22 @@ Then('The response headers contain', function (docString, callback) {
 
 Then(/^I (do not get|get) a bearer from the server$/, function(get, callback) {
   if (get === 'get') {
-    should(this.response.body.jwt).not.eqls(undefined);
+    should(this.response.data.jwt).not.eqls(undefined);
   } else {
-    should(this.response.body).eqls(undefined);
+    should(this.response.data).eqls(undefined);
   }
   callback();
 });
 
 Then('A cookie named {string} matching {string} has been set by the server', function (cookieName, reg, callback) {
   const regex = new RegExp(cookieName + '=' + reg + '; Domain=localhost; Path=/');
-  should(this.response.caseless.dict['set-cookie']).match(regex);
+  should(this.response.headers['set-cookie']).match(regex);
   callback();
 });
 
 Then('I get a user object with id {string} into {string}', function(id, where, callback) {
-  should(this.response.body[where]).be.an.Object();
-  should(this.response.body[where].data).be.an.Object();
-  should(this.response.body[where].id).eqls(id);
+  should(this.response.data[where]).be.an.Object();
+  should(this.response.data[where].body).be.an.Object();
+  should(this.response.data[where].id).eqls(id);
   callback();
 });

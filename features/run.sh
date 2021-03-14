@@ -30,7 +30,7 @@ echo '';
 
 echo 'The server is started: launch tests !'
 
-./node_modules/.bin/cucumber-js --fail-fast --format progress-bar
+./node_modules/.bin/cucumber-js --fail-fast --format progress-bar --publish
 TESTS_EXIT_CODE=$? # store the tests exit code
 
 echo 'Tests are done : shutting down the server'
