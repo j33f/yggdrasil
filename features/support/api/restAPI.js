@@ -73,7 +73,7 @@ api.postFiles= (url, files, bearer, json) => {
     headers: {'Content-Type': 'multipart/form-data'}
   };
   if (bearer) {
-    options.headers.Authorization = 'Bearer ' + bearer
+    options.headers.Authorization = 'Bearer ' + bearer;
   }
 
   return request(options);
