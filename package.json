@@ -8,7 +8,6 @@
     "test:lint": "eslint --max-warnings=0 ./lib ./yggdrasil.js ./features",
     "lint:fix": "eslint --fix --max-warnings=0 ./lib ./yggdrasil.js ./features",
     "test:unit": "nyc --temp-directory ./.nyc_output --report-dir coverage --reporter=text-summary --reporter=lcov mocha && npm run unit:coverage-summary",
-    "test:unit:codecov": "npm run test:unit",
     "test:functional": "./features/run.sh && npm run func:coverage-summary",
     "test:func": "docker exec -ti backend bash -c 'cd /var/app && npm run test:functional'",
     "unit:coverage-summary": "ci/coverage-summary > coverage/coverage.txt",
