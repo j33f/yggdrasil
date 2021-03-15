@@ -4,11 +4,11 @@ services:
   backend:
     image: j33f/node-docker-container
     container_name: backend
-    command: bash -c "ls -al /var/pm2Config && ls -al /var/pm2Config && mv /var/pm2Config/pm2-dev.json /var/pm2Config/config.json && chmod 775 /var/startScripts/run-ci.sh && /var/startScripts/run-ci.sh"
+    command: bash -c "chmod 775 /var/startScripts/run-ci.sh && /var/startScripts/run-ci.sh"
     volumes:
       - ..:/var/app:cached
-      - ./config:/var/pm2Config
-      - ./scripts:/var/startScripts
+      - ./config/pm2-dev.json:/var/pm2Config/config.json
+      - ./scripts/run-ci.sh:/var/startScripts/runCustom.sh
     cap_add:
       - SYS_PTRACE
     depends_on:
