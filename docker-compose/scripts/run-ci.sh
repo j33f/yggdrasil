@@ -16,6 +16,9 @@ else
     echo "Timezone is now set to $(cat /etc/timezone)"
 fi
 
+mkdir -p /root/.npm
+
+sudo chown -R 1001:1002 "/root/.npm"
 npm install -g npm
 npm install --force --build-from-source
 
