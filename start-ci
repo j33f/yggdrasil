@@ -2,18 +2,20 @@
 
 chmod a+x bin/startServerInTestingMode
 
-docker-compose -f docker-compose/ci.yml up
+docker-compose -f docker-compose/ci.yml up -d
 
-echo "[$(date)] - Starting..."
+echo "[$(date)] - Awaiting for the container to be ready..."
 
 n=0
 until [ "$n" -ge 30 ]
 do
    docker exec -t backend npm -v && break  # substitute your command here
    n=$((n+1))
-   echo "Still awating for the container to be ready..."
+   echo "."
    sleep 1
 done
+
+echo "[$(date)] - The container is ready: starting..."
 
 npm run test:func
 FUNC_TESTS_EXIT_CODE=$? # store the tests exit code
@@ -35,4 +37,3 @@ fi
 
 docker-compose -f docker-compose/ci.yml kill
 exit $FUNC_TESTS_EXIT_CODE
-
