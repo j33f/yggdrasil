@@ -17,7 +17,10 @@ jobs:
           command: npm run test:lint
       - run:
           name: Unit tests with Codecov reporting
-          command: npm run test:unit:codecov
+          command: npm run test:unit
+      - run:
+          name: Codecov Report
+          command: curl -s https://codecov.io/bash | bash -s - -t e1425d0c-562f-4a68-b4f1-b22852bf0ffa
   functional-test:
     machine:
       image: ubuntu-2004:202101-01
