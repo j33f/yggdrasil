@@ -9,10 +9,13 @@ echo "[$(date)] - Starting..."
 n=0
 until [ "$n" -ge 30 ]
 do
-   pm run test:func && break  # substitute your command here
+   docker exec -t backend npm -v && break  # substitute your command here
    n=$((n+1))
+   echo "Still awating for the container to be ready..."
    sleep 1
 done
+
+npm run test:func
 FUNC_TESTS_EXIT_CODE=$? # store the tests exit code
 
 if [ $FUNC_TESTS_EXIT_CODE -eq 0 ]
