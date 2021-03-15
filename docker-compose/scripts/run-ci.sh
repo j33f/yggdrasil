@@ -19,4 +19,6 @@ fi
 npm install -g npm
 npm install --force --build-from-source
 
+echo "Container ready to start tests !"
+
 tail -f /dev/null
