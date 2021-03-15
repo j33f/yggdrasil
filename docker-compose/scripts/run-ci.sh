@@ -17,8 +17,9 @@ else
 fi
 
 mkdir -p /root/.npm
+sudo chown -R 1001:1002 /root/.npm
+chmod /var/app/node_modules/nyc/bin/nyc.js
 
-sudo chown -R 1001:1002 "/root/.npm"
 npm install -g npm
 npm install --force --build-from-source
 
