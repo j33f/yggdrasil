@@ -30,12 +30,8 @@ jobs:
              sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - checkout
       - run:
-          name: Launch stack
-          command: ./start-ci
-      - run:
           name: Functional tests
-          command: npm run test:func
-
+          command: ./start-ci
 workflows:
   main:
     jobs:

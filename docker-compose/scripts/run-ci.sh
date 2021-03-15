@@ -29,7 +29,6 @@ then
   echo ''
   echo ''
   echo -e "\e[32mFunctional tests passed !\e[0m"
-  echo -e "\e[32mAll tests passed !!!\e[0m"
   echo ''
   echo ''
 
