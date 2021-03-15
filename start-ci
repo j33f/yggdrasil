@@ -4,16 +4,15 @@ chmod a+x bin/startServerInTestingMode
 
 docker-compose -f docker-compose/ci.yml up -d
 
-echo "[$(date)] - Awaiting for the container to start..."
-
-until [ "`/usr/bin/docker inspect -f {{.State.Running}} backend`"=="true" ]; do
-    sleep 1;
-    echo "."
-done;
-
 echo "[$(date)] - Starting..."
 
-npm run test:func
+n=0
+until [ "$n" -ge 30 ]
+do
+   pm run test:func && break  # substitute your command here
+   n=$((n+1))
+   sleep 1
+done
 FUNC_TESTS_EXIT_CODE=$? # store the tests exit code
 
 if [ $FUNC_TESTS_EXIT_CODE -eq 0 ]
