@@ -21,6 +21,7 @@ sudo chown -R 1001:1002 /root/.npm
 chmod /var/app/node_modules/nyc/bin/nyc.js
 
 npm install -g npm
+npm install -g nyc
 npm install --force --build-from-source
 
 echo "Container ready to start tests !"
