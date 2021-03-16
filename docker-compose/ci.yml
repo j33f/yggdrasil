@@ -4,11 +4,8 @@ services:
   backend:
     image: j33f/node-docker-container
     container_name: backend
-    command: bash -c "chmod 775 /var/startScripts/runCustom.sh && /var/startScripts/runCustom.sh"
     volumes:
       - ..:/var/app:cached
-      - ./config/pm2-dev.json:/var/pm2Config/config.json
-      - ./scripts/run-ci.sh:/var/startScripts/runCustom.sh
     cap_add:
       - SYS_PTRACE
     depends_on:
@@ -20,8 +17,6 @@ services:
       - 208.67.220.220
       - 8.8.8.8
       - 8.8.4.4
-    ports:
-      - "8842:8842"
     environment:
       - NODE_ENV=${NODE_ENV:-development}
 

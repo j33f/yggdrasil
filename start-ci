@@ -1,23 +1,12 @@
 #!/usr/bin/env bash
 
 chmod a+x bin/startServerInTestingMode
+chmod a+x features/run-ci.sh
+chmod a+x features/run.sh
 
-docker-compose -f docker-compose/ci.yml up -d
+echo "[$(date)] - Starting..."
 
-echo "[$(date)] - Awaiting for the container to be ready..."
-
-n=0
-until [ "$n" -ge 30 ]
-do
-   docker exec -t backend npm -v && break  # substitute your command here
-   n=$((n+1))
-   echo "."
-   sleep 1
-done
-
-echo "[$(date)] - The container is ready: starting..."
-
-docker exec -t backend /var/app/features/run.sh
+docker-compose -f docker-compose/ci.yml run backend /var/app/features/run-ci.sh
 FUNC_TESTS_EXIT_CODE=$? # store the tests exit code
 
 if [ $FUNC_TESTS_EXIT_CODE -eq 0 ]
