@@ -22,4 +22,4 @@ npm install --force --build-from-source
 
 echo "Container ready to start tests !"
 
-tail -f /dev/null
+exec npm run test:functional
