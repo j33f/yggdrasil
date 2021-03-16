@@ -15,13 +15,9 @@ else
     apk del tzdata
     echo "Timezone is now set to $(cat /etc/timezone)"
 fi
-
-mkdir -p /root/.npm
-sudo chown -R 1001:1002 /root/.npm
-chmod /var/app/node_modules/nyc/bin/nyc.js
+cd /var/app
 
 npm install -g npm
-npm install -g nyc
 npm install --force --build-from-source
 
 echo "Container ready to start tests !"

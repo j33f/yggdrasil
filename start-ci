@@ -35,5 +35,5 @@ else
   echo ''
 fi
 
-docker-compose -f docker-compose/ci.yml kill
+#docker-compose -f docker-compose/ci.yml kill
 exit $FUNC_TESTS_EXIT_CODE
