@@ -6,9 +6,6 @@ services:
     container_name: backend
     volumes:
       - ..:/var/app:cached
-      - ../fileStorage:/var/fileStorage
-      - ./config/pm2-dev.json:/var/pm2Config/config.json:delegated
-      - ./scripts/run-dev.sh:/var/startScripts/runCustom.sh:delegated
     cap_add:
       - SYS_PTRACE
     depends_on:
@@ -20,10 +17,6 @@ services:
       - 208.67.220.220
       - 8.8.8.8
       - 8.8.4.4
-    ports:
-      - "8842:8842"
-      - "9229:9229"
-      - "9230:9230"
     environment:
       - NODE_ENV=${NODE_ENV:-development}
 
@@ -41,9 +34,6 @@ services:
       memlock:
         soft: -1
         hard: -1
-    volumes:
-      - ../data/mongo:/data/db:cached
-      - ../data/mongoDumps:/data/dumps:cached
     ports:
       - "27017:27017"
     environment:
@@ -56,5 +46,5 @@ services:
     container_name: mailout
     restart: always
     environment:
-      - DOMAIN=nobs-consulting.com
-      - HOSTNAME=nobs-consulting.com
+      - DOMAIN=yggdrasil.com.test
+      - HOSTNAME=yggdrasil.com.test

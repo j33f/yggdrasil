@@ -9,23 +9,34 @@ jobs:
       tag: 14.16.0
     steps:
       - checkout
-      - run: npm install
-      - run: npm run test:lint
-      - run: npm run test:unit:codecov
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Linter
+          command: npm run test:lint
+      - run:
+          name: Unit tests with Codecov reporting
+          command: npm run test:unit
+      - run:
+          name: Codecov Report
+          command: curl -s https://codecov.io/bash | bash -s - -t e1425d0c-562f-4a68-b4f1-b22852bf0ffa
   functional-test:
-    docker:
-      - image: circleci/buildpack-deps:latest
+    machine:
+      image: ubuntu-2004:202101-01
     steps:
-      - setup_remote_docker
+      - run:
+          name: Install docker-compose
+          command: |
+             curl -L https://github.com/docker/compose/releases/download/1.28.5/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+             chmod +x ~/docker-compose
+             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - checkout
       - run:
-          name: Launch stack
+          name: Functional tests
           command: ./start-ci
-      - run:
-          name: Run functional testing
-          command: npm run test:func
-
 workflows:
   main:
     jobs:
       - unit-test
+      - functional-test

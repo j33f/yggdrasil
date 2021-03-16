@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+chmod a+x bin/startServerInTestingMode
+chmod a+x features/run-ci.sh
+chmod a+x features/run.sh
+
+echo "[$(date)] - Starting..."
+
+docker-compose -f docker-compose/ci.yml run backend /var/app/features/run-ci.sh
+FUNC_TESTS_EXIT_CODE=$? # store the tests exit code
+
+if [ $FUNC_TESTS_EXIT_CODE -eq 0 ]
+then
+  echo ''
+  echo ''
+  echo -e "\e[32m Functional tests passed !\e[0m"
+  echo ''
+  echo ''
+else
+  echo ''
+  echo ''
+  echo -e "\e[31m Functional tests failed...\e[0m"
+  echo ''
+  echo ''
+fi
+
+#docker-compose -f docker-compose/ci.yml kill
+exit $FUNC_TESTS_EXIT_CODE

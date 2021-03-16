@@ -3,7 +3,7 @@
 let fixtures = {
   testing_users: {
     data: require('./userData'),
-    credentials: require('./userCredentials')
+    auth: require('./userAuth')
   }
 };
 

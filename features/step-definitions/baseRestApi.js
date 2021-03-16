@@ -33,8 +33,9 @@ Given(/^I authenticate myself as "([^"]*)" with password "([^"]*)" which (exist|
       this.response = response;
       if (this.userExist) {
         this.amIAuthenticated = true;
-        this.currentUser = response.body.user;
-        this.bearer = response.body.jwt;
+        this.currentUserId = response.data.session.userId;
+        this.sessionInfos = response.data.session.sessionInfos;
+        this.bearer = response.data.jwt;
       }
       callback();
     })
@@ -156,7 +157,13 @@ Then('A cookie named {string} matching {string} has been set by the server', fun
 
 Then('I get a user object with id {string} into {string}', function(id, where, callback) {
   should(this.response.data[where]).be.an.Object();
-  should(this.response.data[where].body).be.an.Object();
+  should(this.response.data[where].data).be.an.Object();
   should(this.response.data[where].id).eqls(id);
   callback();
 });
+
+Then('I get a session referencing the following userId {string}', function (userId, callback) {
+  should(this.currentUserId).eqls(userId);
+  callback();
+});
+
