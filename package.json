@@ -44,7 +44,7 @@
     "dot-object": "^2.1.4",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
-    "express-jwt": "^6.0.0",
+    "express-jwt": "^6.1.0",
     "express-winston": "^4.1.0",
     "generate-password": "^1.6.1",
     "helmet": "^4.6.0",
