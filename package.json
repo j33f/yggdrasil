@@ -22,7 +22,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
+      "eslint --fix --max-warnings=0 ./lib ./yggdrasil.js ./features",
       "git add"
     ]
   },
@@ -35,8 +35,8 @@
     "@unitTests": "unitTests/helpers"
   },
   "dependencies": {
-    "axios": "^0.22.0",
-    "@azure/msal-node": "^1.3.2",
+    "@azure/msal-node": "^1.3.3",
+    "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.7.2",
     "body-parser": "^1.19.0",
@@ -46,26 +46,25 @@
     "express-fileupload": "^1.2.1",
     "express-jwt": "^6.1.0",
     "express-winston": "^4.2.0",
-    "generate-password": "^1.6.1",
+    "generate-password": "^1.7.0",
     "helmet": "^4.6.0",
     "ical-toolkit": "^1.0.9",
-    "ioredis": "^4.27.11",
+    "ioredis": "^4.28.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.4",
     "mime-to-extensions": "^1.0.2",
     "moment": "^2.29.1",
-    "mongodb": "^3.7.2",
+    "mongodb": "^4.1.4",
     "morgan": "^1.10.0",
-    "node-mailjet": "^3.3.4",
-    "nodemailer": "^6.6.5",
+    "nodemailer": "^6.7.0",
     "passport": "^0.5.0",
     "passport-facebook": "^3.0.0",
     "passport-github": "^1.1.0",
     "passport-google-oauth2": "^0.2.0",
     "rc": "^1.2.8",
     "serve-favicon": "^2.5.0",
-    "socket.io": "^4.2.0",
+    "socket.io": "^4.3.2",
     "socketio-jwt": "^4.6.2",
     "twittersignin": "^1.2.0",
     "unzipper": "^0.10.11",
@@ -74,17 +73,21 @@
   },
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.1",
-    "eslint": "^7.32.0",
-    "husky": "^7.0.2",
+    "eslint": "^8.2.0",
+    "eslint-plugin-mocha": "^9.0.0",
+    "husky": "^7.0.4",
     "json5": "^2.2.0",
-    "lint-staged": "^11.1.2",
-    "mocha": "^9.1.2",
+    "lint-staged": "^11.2.6",
+    "mocha": "^9.1.3",
     "module-alias": "^2.2.2",
     "nyc": "^15.1.0",
     "rewire": "^5.0.0",
     "should": "^13.2.3",
     "should-sinon": "^0.0.6",
-    "sinon": "^11.1.2",
-    "socket.io-client": "^4.2.0"
+    "sinon": "^12.0.1",
+    "socket.io-client": "^4.3.2"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }

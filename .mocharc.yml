@@ -1,2 +1,0 @@
-spec: lib/**/*.test.js
-timeout: 10000
