@@ -55,7 +55,9 @@
     "es6": true,
     "mocha": true
   },
-  "plugins": [],
+  "plugins": [
+    "mocha"
+  ],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2018

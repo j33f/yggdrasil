@@ -57,21 +57,6 @@
     "secure": false,
     "ignoreTLS": true
   },
-  "mailjet": {
-    "api": {
-      "sms": {
-        "token": "xxxxxx"
-      },
-      "mail": {
-        "public": "xxxxx",
-        "private": "xxxxx"
-      }
-    },
-    "templates": {
-      "default": 123,
-      "newAccount": 123
-    }
-  },
   "emails": {
     "strategy": "smtp",
     "from": {
