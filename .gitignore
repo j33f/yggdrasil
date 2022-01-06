@@ -60,3 +60,4 @@ coverage.functional
 /public/login.html
 /ci/
 .vscode
+.yggdrasilrc
