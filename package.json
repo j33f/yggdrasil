@@ -69,7 +69,7 @@
     "twittersignin": "^1.2.0",
     "unzipper": "^0.10.11",
     "uuid": "^8.3.2",
-    "winston": "^3.3.3"
+    "winston": "^3.5.1"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.1",
