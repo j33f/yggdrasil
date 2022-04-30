@@ -64,7 +64,7 @@
     "passport-google-oauth2": "^0.2.0",
     "rc": "^1.2.8",
     "serve-favicon": "^2.5.0",
-    "socket.io": "^4.4.0",
+    "socket.io": "^4.5.0",
     "socketio-jwt": "^4.6.2",
     "twittersignin": "^1.2.0",
     "unzipper": "^0.10.11",
