@@ -47,7 +47,7 @@
     "express-jwt": "^6.1.0",
     "express-winston": "^4.2.0",
     "generate-password": "^1.7.0",
-    "helmet": "^4.6.0",
+    "helmet": "^5.1.1",
     "ical-toolkit": "^1.0.9",
     "ioredis": "^4.28.2",
     "jsonwebtoken": "^8.5.1",
