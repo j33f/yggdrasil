@@ -2,11 +2,12 @@
   "fileStorage": {
     "strategies": {
       "s3": {
-        "accessKeyId": "SCWKP6YE67MCVC7ZPNNN",
-        "secretKeyId": "9b892ce2-7e93-4859-9ca5-3476d3748828",
-        "region": "fr-par",
+        "lib": "S3",
+        "accessKeyId": "MINIO_ACCESS_KEY",
+        "secretKeyId": "MINIO_SECRET_KEY",
+        "region": "local",
         "bucket": "yggdrasiltest",
-        "endpoint": "https://s3.fr-par.scw.cloud"
+        "endpoint": "http://localhost:9000"
       }
     },
     "strategy": "s3"

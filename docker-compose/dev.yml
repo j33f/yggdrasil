@@ -15,6 +15,7 @@ services:
       - redis
       - mongo
       - mailout
+      - s3
     dns:
       - 208.67.222.222
       - 208.67.220.220
@@ -50,6 +51,23 @@ services:
       - "MONGO_INITDB_ROOT_USERNAME=mongo-admin"
       - "MONGO_INITDB_ROOT_PASSWORD=1Lnl4ZEg!gPdF!zGKdILfww"
       - "MONGO_INITIDB_DATABASE=admin"
+
+  s3:
+    image: minio/minio
+    container_name: s3
+    command: server --console-address ":9001" /data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ../data/s3:/data:cached
+    environment:
+      - MINIO_ACCESS_KEY=MINIO_ACCESS_KEY
+      - MINIO_SECRET_KEY=MINIO_SECRET_KEY
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=password
+      - MINIO_DOMAIN=localhost
+      - MINIO_REGION=local
 
   mailout:
     image: j33f/alpine-postfix
