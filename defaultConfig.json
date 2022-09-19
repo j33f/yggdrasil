@@ -1,0 +1,89 @@
+{
+  "serviceName": "Yggdrasil",
+  "logger": {
+    "level": "silly"
+  },
+  "port": 8842,
+  "api": {
+    "version": "0.1",
+    "unprotectedPath": []
+  },
+  "allowOrigins": [
+    "localhost:8842",
+    "localhost:3000",
+    "localhost:8080"
+  ],
+  "sessions": {
+    "duration": "3h",
+    "durationSeconds": 10800
+  },
+  "externalServerBaseURL": null,
+  "fileStorage": {
+    "strategies": {
+      "local": {
+        "lib": "Local",
+        "storageRootPath": "/var/app/fileStorage"
+      },
+      "S3": {
+
+      }
+    },
+    "strategy": "local"
+  },
+  "redis": {
+    "port": 6379,
+    "host": "redis",
+    "family": 4,
+    "db": 0
+  },
+  "mongo": {
+    "retries": 30,
+    "retryDelay": 1000,
+    "useSSL": false,
+    "host": "mongo",
+    "port": 27017,
+    "auth": {
+      "userName": "mongo-admin",
+      "password": "1Lnl4ZEg!gPdF!zGKdILfww"
+    }
+  },
+  "sendmail": {
+    "name": "Yggdrasil",
+    "timezone": "europe/paris",
+    "tzid": "europe/paris",
+    "pool": true,
+    "host": "mailout",
+    "port": 25,
+    "secure": false,
+    "ignoreTLS": true
+  },
+  "mailjet": {
+    "api": {
+      "sms": {
+        "token": "xxxxxx"
+      },
+      "mail": {
+        "public": "xxxxx",
+        "private": "xxxxx"
+      }
+    },
+    "templates": {
+      "default": 123,
+      "newAccount": 123
+    }
+  },
+  "emails": {
+    "strategy": "smtp",
+    "from": {
+      "name": "Yggdrasil",
+      "email": "thor@yggdrasil-backend.org"
+    },
+    "testModeEmail": "jeff@yggdrasil-backend.org"
+  },
+  "OAuth": {
+    "google": {
+      "clientId": "YOUR CLIENT ID HERE",
+      "clientSecret": "YOUR CLIENT SECRET HERE"
+    }
+  }
+}

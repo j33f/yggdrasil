@@ -1,0 +1,91 @@
+{
+  "name": "yggdrasil",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "./start-dev",
+    "test": "npm run test:lint && npm run test:unit && [ -f /run.sh ] && npm run test:functional || docker exec -ti backend bash -c 'cd /var/app && npm run test:functional' && npm run coverage-combine",
+    "test:lint": "eslint --max-warnings=0 ./lib ./yggdrasil.js ./features",
+    "lint:fix": "eslint --fix --max-warnings=0 ./lib ./yggdrasil.js ./features",
+    "test:unit": "nyc --temp-directory ./.nyc_output --report-dir coverage --reporter=text-summary --reporter=lcov mocha && npm run unit:coverage-summary",
+    "test:unit:codecov": "nyc --temp-directory ./.nyc_output --report-dir coverage --reporter=text-summary --reporter=lcov mocha && npm run unit:coverage-summary && curl -s https://codecov.io/bash | bash -s - -t e1425d0c-562f-4a68-b4f1-b22852bf0ffa",
+    "test:functional": "./features/run.sh && npm run func:coverage-summary",
+    "test:func": "docker exec -ti backend bash -c 'cd /var/app && npm run test:functional'",
+    "unit:coverage-summary": "ci/coverage-summary > coverage/coverage.txt",
+    "func:coverage-summary": "ci/func.coverage-summary > coverage.functional/coverage.txt",
+    "coverage-combine": "cat coverage/coverage.txt > coverage/coverage.combined.txt && cat coverage.functional/coverage.txt >> coverage/coverage.combined.txt"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "postcommit": "git update-index --again"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "_moduleAliases": {
+    "@lib": "lib",
+    "@utils": "lib/utils",
+    "@models": "lib/models",
+    "@repositories": "lib/models/repositories",
+    "@root": "./",
+    "@unitTests": "unitTests/helpers"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^1.0.1",
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dot-object": "^2.1.4",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-jwt": "^6.0.0",
+    "express-winston": "^4.1.0",
+    "generate-password": "^1.6.0",
+    "helmet": "^4.4.1",
+    "ical-toolkit": "^1.0.9",
+    "ioredis": "^4.22.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "lorem-ipsum": "^2.0.3",
+    "mime-to-extensions": "^1.0.2",
+    "moment": "^2.29.1",
+    "mongodb": "^3.6.4",
+    "morgan": "^1.10.0",
+    "node-mailjet": "^3.3.1",
+    "nodemailer": "^6.4.18",
+    "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth2": "^0.2.0",
+    "rc": "^1.2.8",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^3.1.1",
+    "socketio-jwt": "^4.6.2",
+    "twittersignin": "^1.2.0",
+    "unzipper": "^0.10.11",
+    "uuid": "^8.3.2",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.0.0",
+    "eslint": "^7.20.0",
+    "husky": "^5.1.1",
+    "json5": "^2.2.0",
+    "lint-staged": "^10.5.4",
+    "mocha": "^8.3.0",
+    "module-alias": "^2.2.2",
+    "nyc": "^15.1.0",
+    "rewire": "^5.0.0",
+    "should": "^13.2.3",
+    "should-sinon": "^0.0.6",
+    "sinon": "^9.2.4",
+    "socket.io-client": "^3.1.1"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "apps": [{
+    "name"         : "Yggdrasil",
+    "script"       : "bin/startServer",
+    "args"         : [],
+    "watch"        : ["*.js", "*.json", "lib/**/*.js", "lib/**/*.pug", "plugins/**/*.js", "plugins/**/*.pug", "bin/startServer"],
+    "watch_options": {
+      "usePolling": true
+    },
+    "node_args"    : "--inspect=0.0.0.0:9229 --max-old-space-size=4000 --trace-warnings",
+    "kill_timeout" : 15000,
+    "instances"    : 1,
+    "env": {
+      "NODE_ENV": "development"
+    }
+  }]
+}

@@ -1,0 +1,51 @@
+[
+  {
+    "_id" : "5c61894fd6b0362d7b5fbe8d",
+    "body": {
+      "identity" : {
+        "gender" : "M",
+        "firstName" : "Thor",
+        "lastName" : "The Magnificent",
+        "dob" : null,
+        "birthPlace" : null,
+        "nationality" : null
+      },
+      "contact" : {
+        "email" : "thor@yggdrasil.com",
+        "rescueEmail" : null,
+        "phones" : {
+          "mobile" : "+33678901234",
+          "office" : "+33478901234"
+        },
+        "messagingAndSocialNetworks" : {
+          "skype" : null,
+          "telegram" : null,
+          "facebook" : null,
+          "linkedin" : null,
+          "whatsyggdrasil" : null
+        },
+        "mailingListOptIn" : false,
+        "address" : {
+          "lines" : [],
+          "zipCode" : null,
+          "city" : null,
+          "state" : null,
+          "country" : null
+        }
+      },
+      "preferences" : {
+        "contact" : {
+          "sms" : true,
+          "phone" : true,
+          "telegram" : false,
+          "skype" : false,
+          "messenger" : false
+        }
+      },
+      "files" : [],
+      "policies" : [
+        "root"
+      ]
+    }
+  }
+]

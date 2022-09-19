@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+docker-compose -f docker-compose/uat.yml kill
+
+chmod a+x bin/startServer
+
+exec docker-compose -f docker-compose/uat.yml up --remove-orphans

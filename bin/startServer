@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+'use strict';
+
+/** Declare the yggdrasil **/
+const yggdrasil = require('../yggdrasil');
+
+/** Start The yggdrasil ! **/
+yggdrasil.startup.startServer();

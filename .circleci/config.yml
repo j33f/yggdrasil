@@ -1,0 +1,31 @@
+version: 2.1
+orbs:
+  node: circleci/node@4.2.0
+
+jobs:
+  unit-test:
+    executor:
+      name: node/default
+      tag: 14.16.0
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run test:lint
+      - run: npm run test:unit:codecov
+  functional-test:
+    docker:
+      - image: circleci/buildpack-deps:latest
+    steps:
+      - setup_remote_docker
+      - checkout
+      - run:
+          name: Launch stack
+          command: ./start-ci
+      - run:
+          name: Run functional testing
+          command: npm run test:func
+
+workflows:
+  main:
+    jobs:
+      - unit-test
