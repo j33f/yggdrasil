@@ -49,7 +49,7 @@
     "generate-password": "^1.7.0",
     "helmet": "^4.6.0",
     "ical-toolkit": "^1.0.9",
-    "ioredis": "^4.28.2",
+    "ioredis": "^5.2.5",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.4",
