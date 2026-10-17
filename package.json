@@ -68,7 +68,7 @@
     "socketio-jwt": "^4.6.2",
     "twittersignin": "^1.2.0",
     "unzipper": "^0.10.11",
-    "uuid": "^8.3.2",
+    "uuid": "^14.0.3",
     "winston": "^3.8.2"
   },
   "devDependencies": {
